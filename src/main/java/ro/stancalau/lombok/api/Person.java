@@ -6,6 +6,8 @@ import java.util.Set;
 
 public interface Person {
 
+    String DEFAULT_NAME = "JohnDoe";
+
     String getName();
 
     Set<Person> getChildren();

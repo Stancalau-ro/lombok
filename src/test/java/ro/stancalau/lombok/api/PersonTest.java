@@ -26,9 +26,9 @@ public abstract class PersonTest {
     }
 
     @Test
-    public void givenValuesWhenConstructingHumanThenGettersReturnOriginalValues() throws Exception {
+    public void givenValuesWhenConstructingPersonThenGettersReturnOriginalValues() throws Exception {
         //when
-        Person joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalMutableChildren);
 
         //then
         assertEquals(NAME, joe.getName());
@@ -37,9 +37,9 @@ public abstract class PersonTest {
     }
 
     @Test
-    public void givenHumanWhenMutatingChildListAsSideEffectThenHumanStateDoesNotChange() throws Exception {
+    public void givenPersonWhenMutatingChildListAsSideEffectThenPersonStateDoesNotChange() throws Exception {
         //given
-        Person joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalMutableChildren);
 
         //when
         joe.getChildren().add(ILLEGITIMATE_CHILD);
@@ -50,9 +50,9 @@ public abstract class PersonTest {
     }
 
     @Test
-    public void givenHumanWhenMutatingChildListAsSideEffectThenGlobalSetDoesNotChange() throws Exception {
+    public void givenPersonWhenMutatingChildListAsSideEffectThenGlobalSetDoesNotChange() throws Exception {
         //given
-        Person joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalMutableChildren);
 
         //when
         joe.getChildren().add(ILLEGITIMATE_CHILD);
@@ -62,9 +62,9 @@ public abstract class PersonTest {
     }
 
     @Test
-    public void givenHumanWhenMutatingGlobalSetThenHumanChildrenDoNotChange() throws Exception {
+    public void givenPersonWhenMutatingGlobalSetThenPersonChildrenDoNotChange() throws Exception {
         //given
-        Person joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalMutableChildren);
 
         //when
         globalMutableChildren.add(ILLEGITIMATE_CHILD);
@@ -74,9 +74,9 @@ public abstract class PersonTest {
     }
 
     @Test
-    public void givenHumanWhenAddingChildThenChildCountIncreases() throws Exception {
+    public void givenPersonWhenAddingChildThenChildCountIncreases() throws Exception {
         //given
-        Person joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalMutableChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -86,9 +86,9 @@ public abstract class PersonTest {
     }
 
     @Test
-    public void givenHumanWhenAddingChildThenNewChildIsContainedInChildren() throws Exception {
+    public void givenPersonWhenAddingChildThenNewChildIsContainedInChildren() throws Exception {
         //given
-        Person joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalMutableChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -98,9 +98,9 @@ public abstract class PersonTest {
     }
 
     @Test
-    public void givenHumanWhenAddingChildThenGlobalSetSizeDoesNotChange() throws Exception {
+    public void givenPersonWhenAddingChildThenGlobalSetSizeDoesNotChange() throws Exception {
         //given
-        Person joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalMutableChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -110,9 +110,9 @@ public abstract class PersonTest {
     }
 
     @Test
-    public void givenHumanWhenAddingChildThenNewChildNotContainedInGlobalSet() throws Exception {
+    public void givenPersonWhenAddingChildThenNewChildNotContainedInGlobalSet() throws Exception {
         //given
-        Person joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalMutableChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -122,27 +122,36 @@ public abstract class PersonTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void givenNullChildrenSetWhenConstructThenNullPointerExceptionExpected() throws Exception {
+    public void givenNullChildrenSetWhenConstructingThenNullPointerExceptionExpected() throws Exception {
         //given
         Set<Person> children = null;
 
         //when
-        createHuman(NAME, children);
+        createPerson(NAME, children);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void givenNullNameConstructingThenNullPointerExceptionExpected() throws Exception {
+        //given
+        String name = null;
+
+        //when
+        createPerson(name, globalMutableChildren);
     }
 
     @Test
-    public void givenOnlyNameWhenConstructThenChildrenSetSizeIsZero() throws Exception {
+    public void givenOnlyNameWhenConstructingThenChildrenSetSizeIsZero() throws Exception {
         //when
-        Person joe = createHuman(NAME);
+        Person joe = createPerson(NAME);
 
         //then
         assertEquals(0, joe.getChildren().size());
     }
 
     @Test
-    public void givenHumanConstructedByNameWhenAddChildThenChildCountIncreases() throws Exception {
+    public void givenPersonConstructedByNameWhenAddChildThenChildCountIncreases() throws Exception {
         //given
-        Person joe = createHuman(NAME);
+        Person joe = createPerson(NAME);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -151,7 +160,42 @@ public abstract class PersonTest {
         assertEquals(1, joe.getChildren().size());
     }
 
-    protected abstract Person createHuman(String name, Set<Person> children);
+    @Test
+    public void givenNoParamsWhenConstructThenChildrenSetSizeIsZero() throws Exception {
+        //when
+        Person joe = createPerson();
 
-    protected abstract Person createHuman(String name);
+        //then
+        assertEquals(0, joe.getChildren().size());
+    }
+
+    @Test
+    public void givenPersonConstructedWithNoArgsWhenAddChildThenChildCountIncreases() throws Exception {
+        //given
+        Person joe = createPerson();
+
+        //when
+        joe.addChild(ILLEGITIMATE_CHILD);
+
+        //then
+        assertEquals(1, joe.getChildren().size());
+    }
+
+    @Test
+    public void givenPersonConstructedWithNoArgsWhenGetNameThenItIsDefault() throws Exception {
+        //given
+        Person joe = createPerson();
+
+        //when
+        String name = joe.getName();
+
+        //then
+        assertEquals(Person.DEFAULT_NAME, name);
+    }
+
+    protected abstract Person createPerson(String name, Set<Person> children);
+
+    protected abstract Person createPerson(String name);
+
+    protected abstract Person createPerson();
 }

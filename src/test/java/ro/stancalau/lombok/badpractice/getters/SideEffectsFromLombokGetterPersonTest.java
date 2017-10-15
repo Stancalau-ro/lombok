@@ -8,12 +8,17 @@ import java.util.Set;
 public class SideEffectsFromLombokGetterPersonTest extends PersonTest {
 
     @Override
-    protected Person createHuman(String name, Set<Person> children) {
+    protected Person createPerson(String name, Set<Person> children) {
         return new SideEffectsFromLombokGetterPerson(name, children);
     }
 
     @Override
-    protected Person createHuman(String name) {
+    protected Person createPerson(String name) {
         return new SideEffectsFromLombokGetterPerson(name);
+    }
+
+    @Override
+    protected Person createPerson() {
+        return new SideEffectsFromLombokGetterPerson();
     }
 }

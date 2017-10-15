@@ -2,29 +2,28 @@ package ro.stancalau.lombok.badpractice.constructor;
 
 import com.sun.istack.internal.NotNull;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import ro.stancalau.lombok.api.Person;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@NoArgsConstructor
-public class LombokNoArgsConstructorPerson implements Person {
+@RequiredArgsConstructor
+public class LombokRequiredArgsConstructorPerson implements Person {
 
+    @NonNull
     private String name;
+    @NonNull
     private Set<Person> children;
 
-    public LombokNoArgsConstructorPerson(@NotNull String name) {
-        this(name, new HashSet<>());
+    public LombokRequiredArgsConstructorPerson() {
+        this(DEFAULT_NAME);
     }
 
-    public LombokNoArgsConstructorPerson(@NotNull String name, @NonNull Set<Person> children) {
-        this.name = name;
-
-        //Setting copy as otherwise, changes in passed set would mirror in this instance's state.
-        this.children = new HashSet<>(children);
+    public LombokRequiredArgsConstructorPerson(@NotNull String name) {
+        this(name, new HashSet<>());
     }
 
     @Override

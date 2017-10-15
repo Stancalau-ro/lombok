@@ -1,5 +1,6 @@
 package ro.stancalau.lombok.badpractice.constructor;
 
+import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
@@ -15,7 +16,11 @@ public class LombokAllArgsConstructorPerson implements Person {
     private String name;
     private Set<Person> children;
 
-    public LombokAllArgsConstructorPerson(String name) {
+    public LombokAllArgsConstructorPerson() {
+        this(DEFAULT_NAME);
+    }
+
+    public LombokAllArgsConstructorPerson(@NotNull String name) {
         this.name = name;
 
         //Cannot be Collections.emptySet() as that would be immutable and the .add method would throw exception.
