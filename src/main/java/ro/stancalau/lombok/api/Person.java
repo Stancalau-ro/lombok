@@ -4,11 +4,11 @@ import lombok.NonNull;
 
 import java.util.Set;
 
-public interface Human {
+public interface Person {
 
     String getName();
 
-    Set<Human> getChildren();
+    Set<Person> getChildren();
 
-    void addChild(@NonNull Human child);
+    void addChild(@NonNull Person child);
 }

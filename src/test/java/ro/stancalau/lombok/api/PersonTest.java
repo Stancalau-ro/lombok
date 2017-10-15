@@ -2,33 +2,33 @@ package ro.stancalau.lombok.api;
 
 import org.junit.Before;
 import org.junit.Test;
-import ro.stancalau.lombok.goodpractice.CorrectHuman;
+import ro.stancalau.lombok.goodpractice.CorrectPerson;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
 
-public abstract class HumanTest {
+public abstract class PersonTest {
 
     protected static final String NAME = "Joe";
     private static final String BOY_NAME = "Joel";
     private static final String GIRL_NAME = "Jane";
 
-    protected Set<Human> globalMutableChildren;
-    private static final Human ILLEGITIMATE_CHILD = new CorrectHuman("Bob");
+    protected Set<Person> globalMutableChildren;
+    private static final Person ILLEGITIMATE_CHILD = new CorrectPerson("Bob");
 
     @Before
     public void setUp() throws Exception {
         globalMutableChildren = new HashSet<>();
-        globalMutableChildren.add(new CorrectHuman(BOY_NAME));
-        globalMutableChildren.add(new CorrectHuman(GIRL_NAME));
+        globalMutableChildren.add(new CorrectPerson(BOY_NAME));
+        globalMutableChildren.add(new CorrectPerson(GIRL_NAME));
     }
 
     @Test
     public void givenValuesWhenConstructingHumanThenGettersReturnOriginalValues() throws Exception {
         //when
-        Human joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createHuman(NAME, globalMutableChildren);
 
         //then
         assertEquals(NAME, joe.getName());
@@ -39,7 +39,7 @@ public abstract class HumanTest {
     @Test
     public void givenHumanWhenMutatingChildListAsSideEffectThenHumanStateDoesNotChange() throws Exception {
         //given
-        Human joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createHuman(NAME, globalMutableChildren);
 
         //when
         joe.getChildren().add(ILLEGITIMATE_CHILD);
@@ -52,7 +52,7 @@ public abstract class HumanTest {
     @Test
     public void givenHumanWhenMutatingChildListAsSideEffectThenGlobalSetDoesNotChange() throws Exception {
         //given
-        Human joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createHuman(NAME, globalMutableChildren);
 
         //when
         joe.getChildren().add(ILLEGITIMATE_CHILD);
@@ -64,7 +64,7 @@ public abstract class HumanTest {
     @Test
     public void givenHumanWhenMutatingGlobalSetThenHumanChildrenDoNotChange() throws Exception {
         //given
-        Human joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createHuman(NAME, globalMutableChildren);
 
         //when
         globalMutableChildren.add(ILLEGITIMATE_CHILD);
@@ -76,7 +76,7 @@ public abstract class HumanTest {
     @Test
     public void givenHumanWhenAddingChildThenChildCountIncreases() throws Exception {
         //given
-        Human joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createHuman(NAME, globalMutableChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -88,7 +88,7 @@ public abstract class HumanTest {
     @Test
     public void givenHumanWhenAddingChildThenNewChildIsContainedInChildren() throws Exception {
         //given
-        Human joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createHuman(NAME, globalMutableChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -100,7 +100,7 @@ public abstract class HumanTest {
     @Test
     public void givenHumanWhenAddingChildThenGlobalSetSizeDoesNotChange() throws Exception {
         //given
-        Human joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createHuman(NAME, globalMutableChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -112,7 +112,7 @@ public abstract class HumanTest {
     @Test
     public void givenHumanWhenAddingChildThenNewChildNotContainedInGlobalSet() throws Exception {
         //given
-        Human joe = createHuman(NAME, globalMutableChildren);
+        Person joe = createHuman(NAME, globalMutableChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -124,16 +124,16 @@ public abstract class HumanTest {
     @Test(expected = NullPointerException.class)
     public void givenNullChildrenSetWhenConstructThenNullPointerExceptionExpected() throws Exception {
         //given
-        Set<Human> children = null;
+        Set<Person> children = null;
 
         //when
-        Human joe = createHuman(NAME, children);
+        createHuman(NAME, children);
     }
 
     @Test
     public void givenOnlyNameWhenConstructThenChildrenSetSizeIsZero() throws Exception {
         //when
-        Human joe = createHuman(NAME);
+        Person joe = createHuman(NAME);
 
         //then
         assertEquals(0, joe.getChildren().size());
@@ -142,7 +142,7 @@ public abstract class HumanTest {
     @Test
     public void givenHumanConstructedByNameWhenAddChildThenChildCountIncreases() throws Exception {
         //given
-        Human joe = createHuman(NAME);
+        Person joe = createHuman(NAME);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -151,7 +151,7 @@ public abstract class HumanTest {
         assertEquals(1, joe.getChildren().size());
     }
 
-    protected abstract Human createHuman(String name, Set<Human> children);
+    protected abstract Person createHuman(String name, Set<Person> children);
 
-    protected abstract Human createHuman(String name);
+    protected abstract Person createHuman(String name);
 }
