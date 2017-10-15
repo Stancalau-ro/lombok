@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ro.stancalau.lombok.api.Parent;
 import ro.stancalau.lombok.api.Person;
-import ro.stancalau.lombok.examples.goodpractice.CorrectParent;
+import ro.stancalau.lombok.examples.goodpractice.MutableParent;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -16,15 +16,15 @@ public abstract class ParentTest extends PersonTest<Parent> implements ParentFac
 
     private static final String BOY_NAME = "Joel";
     private static final String GIRL_NAME = "Jane";
-    private static final Person ILLEGITIMATE_CHILD = new CorrectParent("Bob");
+    private static final Person ILLEGITIMATE_CHILD = new MutableParent("Bob");
 
     private Set<Person> globalChildren;
 
     @Before
     public void setUp() throws Exception {
         globalChildren = new HashSet<>();
-        globalChildren.add(new CorrectParent(BOY_NAME));
-        globalChildren.add(new CorrectParent(GIRL_NAME));
+        globalChildren.add(new MutableParent(BOY_NAME));
+        globalChildren.add(new MutableParent(GIRL_NAME));
     }
 
     @Test

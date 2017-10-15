@@ -12,22 +12,22 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class CorrectParent implements Parent {
+public class MutableParent implements Parent {
 
     @NonNull
     private String name;
     @NonNull
     private Set<Person> children;
 
-    public CorrectParent() {
+    public MutableParent() {
         this(DEFAULT_NAME);
     }
 
-    public CorrectParent(String name) {
+    public MutableParent(String name) {
         this(name, Collections.emptySet());
     }
 
-    public CorrectParent(String name, Set<Person> children) {
+    public MutableParent(String name, Set<Person> children) {
         setName(name);
         setChildren(children);
     }
