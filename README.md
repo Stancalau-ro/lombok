@@ -1,4 +1,4 @@
-# Lombok - Stancalau.ro
+# Lombok practices by stancalau.ro
 Exemples for Lombok best and worst practices.
 
 ##Prerequisites
@@ -7,6 +7,7 @@ Exemples for Lombok best and worst practices.
 3. Lombok plugin over your IDE
 
 ##References
+
 [Lombok Project home page](https://projectlombok.org/)
 
 [Gradle hope page](https://gradle.org/)
