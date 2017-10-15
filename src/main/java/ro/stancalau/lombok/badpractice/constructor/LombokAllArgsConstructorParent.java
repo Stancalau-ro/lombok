@@ -1,6 +1,5 @@
 package ro.stancalau.lombok.badpractice.constructor;
 
-import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
@@ -16,14 +15,16 @@ import java.util.Set;
 @AllArgsConstructor
 public class LombokAllArgsConstructorParent implements Parent {
 
+    @NonNull
     private String name;
+    @NonNull
     private Set<Person> children;
 
     public LombokAllArgsConstructorParent() {
         this(DEFAULT_NAME);
     }
 
-    public LombokAllArgsConstructorParent(@NotNull String name) {
+    public LombokAllArgsConstructorParent(String name) {
         setName(name);
         setChildren(new HashSet<>());
     }

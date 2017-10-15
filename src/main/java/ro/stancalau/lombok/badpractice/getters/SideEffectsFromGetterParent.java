@@ -1,6 +1,5 @@
 package ro.stancalau.lombok.badpractice.getters;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -14,18 +13,20 @@ import java.util.Set;
 @Setter
 public class SideEffectsFromGetterParent implements Parent {
 
+    @NonNull
     private String name;
+    @NonNull
     private Set<Person> children;
 
     public SideEffectsFromGetterParent() {
         this(DEFAULT_NAME);
     }
 
-    public SideEffectsFromGetterParent(@NotNull String name) {
+    public SideEffectsFromGetterParent(String name) {
         this(name, new HashSet<>());
     }
 
-    public SideEffectsFromGetterParent(@NotNull String name, @NonNull Set<Person> children) {
+    public SideEffectsFromGetterParent(String name, Set<Person> children) {
         this.name = name;
 
         //Setting copy as otherwise, changes in passed set would mirror in this instance's state.

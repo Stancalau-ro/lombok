@@ -14,18 +14,20 @@ import java.util.Set;
 @Setter
 public class CorrectParent implements Parent {
 
+    @NonNull
     private String name;
+    @NonNull
     private Set<Person> children;
 
     public CorrectParent() {
         this(DEFAULT_NAME);
     }
 
-    public CorrectParent(@NonNull String name) {
+    public CorrectParent(String name) {
         this(name, Collections.emptySet());
     }
 
-    public CorrectParent(@NonNull String name, @NonNull Set<Person> children) {
+    public CorrectParent(String name, Set<Person> children) {
         setName(name);
         setChildren(children);
     }

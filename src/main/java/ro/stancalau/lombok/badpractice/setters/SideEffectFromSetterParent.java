@@ -13,19 +13,21 @@ import java.util.Set;
 @Setter
 public class SideEffectFromSetterParent implements Parent {
 
+    @NonNull
     private String name;
+    @NonNull
     private Set<Person> children;
 
     public SideEffectFromSetterParent() {
         this(DEFAULT_NAME);
     }
 
-    public SideEffectFromSetterParent(@NonNull String name) {
+    public SideEffectFromSetterParent(String name) {
         //Here we instantiate with new set, as Collections.emptySet() is immutable.
         this(name, new HashSet<>());
     }
 
-    public SideEffectFromSetterParent(@NonNull String name, @NonNull Set<Person> children) {
+    public SideEffectFromSetterParent(String name, Set<Person> children) {
         setName(name);
         setChildren(children);
     }

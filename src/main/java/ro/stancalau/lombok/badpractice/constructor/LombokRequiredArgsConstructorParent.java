@@ -1,6 +1,5 @@
 package ro.stancalau.lombok.badpractice.constructor;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +24,7 @@ public class LombokRequiredArgsConstructorParent implements Parent {
         this(DEFAULT_NAME);
     }
 
-    public LombokRequiredArgsConstructorParent(@NotNull String name) {
+    public LombokRequiredArgsConstructorParent(String name) {
         this(name, new HashSet<>());
     }
 

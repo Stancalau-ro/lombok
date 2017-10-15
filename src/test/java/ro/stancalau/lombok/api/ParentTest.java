@@ -10,7 +10,7 @@ import java.util.Set;
 
 import static org.junit.Assert.*;
 
-public abstract class ParentTest extends PersonTest<Parent> {
+public abstract class ParentTest extends PersonTest<Parent> implements ParentFactory<Parent> {
 
     private static final String BOY_NAME = "Joel";
     private static final String GIRL_NAME = "Jane";

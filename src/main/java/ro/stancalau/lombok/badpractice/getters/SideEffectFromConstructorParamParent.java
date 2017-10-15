@@ -1,6 +1,5 @@
 package ro.stancalau.lombok.badpractice.getters;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -14,18 +13,20 @@ import java.util.Set;
 @Setter
 public class SideEffectFromConstructorParamParent implements Parent {
 
+    @NonNull
     private String name;
+    @NonNull
     private Set<Person> children;
 
     public SideEffectFromConstructorParamParent() {
         this(DEFAULT_NAME);
     }
 
-    public SideEffectFromConstructorParamParent(@NotNull String name) {
+    public SideEffectFromConstructorParamParent(String name) {
         this(name, new HashSet<>());
     }
 
-    public SideEffectFromConstructorParamParent(@NotNull String name, @NonNull Set<Person> children) {
+    public SideEffectFromConstructorParamParent(String name, Set<Person> children) {
         setName(name);
 
         //Here, there we should set a copy of the parameter set, or call the setter
