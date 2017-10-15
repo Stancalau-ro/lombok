@@ -2,72 +2,74 @@ package ro.stancalau.lombok.api;
 
 import org.junit.Before;
 import org.junit.Test;
-import ro.stancalau.lombok.goodpractice.CorrectPerson;
+import ro.stancalau.lombok.goodpractice.CorrectMutablePerson;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
 
-public abstract class PersonTest {
+public abstract class MutablePersonTest implements PersonFactory {
 
-    protected static final String NAME = "Joe";
+    private static final String NAME = "Joe";
+    private static final String NEW_NAME = "Jerome";
     private static final String BOY_NAME = "Joel";
     private static final String GIRL_NAME = "Jane";
+    private static final Person ILLEGITIMATE_CHILD = new CorrectMutablePerson("Bob");
 
-    protected Set<Person> globalMutableChildren;
-    private static final Person ILLEGITIMATE_CHILD = new CorrectPerson("Bob");
+    private Set<Person> globalChildren;
 
     @Before
     public void setUp() throws Exception {
-        globalMutableChildren = new HashSet<>();
-        globalMutableChildren.add(new CorrectPerson(BOY_NAME));
-        globalMutableChildren.add(new CorrectPerson(GIRL_NAME));
+        globalChildren = new HashSet<>();
+        globalChildren.add(new CorrectMutablePerson(BOY_NAME));
+        globalChildren.add(new CorrectMutablePerson(GIRL_NAME));
     }
 
     @Test
     public void givenValuesWhenConstructingPersonThenGettersReturnOriginalValues() throws Exception {
         //when
-        Person joe = createPerson(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalChildren);
 
         //then
         assertEquals(NAME, joe.getName());
         assertEquals(2, joe.getChildren().size());
-        assertEquals(globalMutableChildren, joe.getChildren());
+        assertEquals(globalChildren, joe.getChildren());
     }
 
     @Test
     public void givenPersonWhenMutatingChildListAsSideEffectThenPersonStateDoesNotChange() throws Exception {
         //given
-        Person joe = createPerson(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalChildren);
 
         //when
         joe.getChildren().add(ILLEGITIMATE_CHILD);
 
         //then
         assertEquals(2, joe.getChildren().size());
-        assertEquals(globalMutableChildren, joe.getChildren());
+        assertEquals(globalChildren, joe.getChildren());
     }
 
     @Test
     public void givenPersonWhenMutatingChildListAsSideEffectThenGlobalSetDoesNotChange() throws Exception {
         //given
-        Person joe = createPerson(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalChildren);
 
         //when
         joe.getChildren().add(ILLEGITIMATE_CHILD);
 
         //then
-        assertEquals(2, globalMutableChildren.size());
+        assertEquals(2, globalChildren.size());
     }
 
     @Test
     public void givenPersonWhenMutatingGlobalSetThenPersonChildrenDoNotChange() throws Exception {
         //given
-        Person joe = createPerson(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalChildren);
 
         //when
-        globalMutableChildren.add(ILLEGITIMATE_CHILD);
+        globalChildren.add(ILLEGITIMATE_CHILD);
 
         //then
         assertEquals(2, joe.getChildren().size());
@@ -76,7 +78,7 @@ public abstract class PersonTest {
     @Test
     public void givenPersonWhenAddingChildThenChildCountIncreases() throws Exception {
         //given
-        Person joe = createPerson(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -88,7 +90,7 @@ public abstract class PersonTest {
     @Test
     public void givenPersonWhenAddingChildThenNewChildIsContainedInChildren() throws Exception {
         //given
-        Person joe = createPerson(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
@@ -100,25 +102,25 @@ public abstract class PersonTest {
     @Test
     public void givenPersonWhenAddingChildThenGlobalSetSizeDoesNotChange() throws Exception {
         //given
-        Person joe = createPerson(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
 
         //then
-        assertEquals(2, globalMutableChildren.size());
+        assertEquals(2, globalChildren.size());
     }
 
     @Test
     public void givenPersonWhenAddingChildThenNewChildNotContainedInGlobalSet() throws Exception {
         //given
-        Person joe = createPerson(NAME, globalMutableChildren);
+        Person joe = createPerson(NAME, globalChildren);
 
         //when
         joe.addChild(ILLEGITIMATE_CHILD);
 
         //then
-        assertFalse(globalMutableChildren.contains(ILLEGITIMATE_CHILD));
+        assertFalse(globalChildren.contains(ILLEGITIMATE_CHILD));
     }
 
     @Test(expected = NullPointerException.class)
@@ -136,7 +138,7 @@ public abstract class PersonTest {
         String name = null;
 
         //when
-        createPerson(name, globalMutableChildren);
+        createPerson(name, globalChildren);
     }
 
     @Test
@@ -193,9 +195,60 @@ public abstract class PersonTest {
         assertEquals(Person.DEFAULT_NAME, name);
     }
 
-    protected abstract Person createPerson(String name, Set<Person> children);
+    @Test
+    public void givenPersonWhenSetNameThenGetUpdatedName() throws Exception {
+        //given
+        Person joe = createPerson(NAME);
 
-    protected abstract Person createPerson(String name);
+        //when
+        joe.setName(NEW_NAME);
 
-    protected abstract Person createPerson();
+        //then
+        assertEquals(NEW_NAME, joe.getName());
+    }
+
+    @Test
+    public void givenPersonWhenSetChildrenThenGetUpdatedChildrenSet() throws Exception {
+        //given
+        Person joe = createPerson(NAME, globalChildren);
+
+        //when
+        Set<Person> newChildren = Collections.singleton(createPerson(NEW_NAME));
+        joe.setChildren(newChildren);
+
+        //then
+        assertEquals(newChildren, joe.getChildren());
+    }
+
+    @Test
+    public void givenPersonWithSetChildrenWhenOriginalSetChangesThenPersonChildrenDoNotChange() throws Exception {
+        //given
+        Person joe = createPerson(NAME);
+        Set<Person> newChildren = new HashSet<>();
+        joe.setChildren(newChildren);
+        int childCount = newChildren.size();
+
+        //when
+        newChildren.add(ILLEGITIMATE_CHILD);
+
+        //then
+        assertEquals(childCount, joe.getChildren().size());
+        assertFalse(joe.getChildren().contains(ILLEGITIMATE_CHILD));
+    }
+
+    @Test
+    public void givenPersonWithSetChildrenWhenPersonChildAddedThenOriginalSetNotChanged() throws Exception {
+        //given
+        Person joe = createPerson(NAME);
+        Set<Person> newChildren = new HashSet<>();
+        joe.setChildren(newChildren);
+        int childCount = newChildren.size();
+
+        //when
+        joe.addChild(ILLEGITIMATE_CHILD);
+
+        //then
+        assertEquals(childCount, newChildren.size());
+        assertFalse(newChildren.contains(ILLEGITIMATE_CHILD));
+    }
 }

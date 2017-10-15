@@ -1,34 +1,33 @@
-package ro.stancalau.lombok.badpractice.getters;
+package ro.stancalau.lombok.badpractice.setters;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import ro.stancalau.lombok.api.Person;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-public class SideEffectFromOriginalParamPerson implements Person {
+@Setter
+public class SideEffectFromSetterPerson implements Person {
 
     private String name;
     private Set<Person> children;
 
-    public SideEffectFromOriginalParamPerson() {
+    public SideEffectFromSetterPerson() {
         this(DEFAULT_NAME);
     }
 
-    public SideEffectFromOriginalParamPerson(@NotNull String name) {
+    public SideEffectFromSetterPerson(@NonNull String name) {
+        //Here we instantiate with new set, as Collections.emptySet() is immutable.
         this(name, new HashSet<>());
     }
 
-    public SideEffectFromOriginalParamPerson(@NotNull String name, @NonNull Set<Person> children) {
-        this.name = name;
-
-        //Here, there we should set a copy of the parameter set
-        this.children = children;
+    public SideEffectFromSetterPerson(@NonNull String name, @NonNull Set<Person> children) {
+        setName(name);
+        setChildren(children);
     }
-
 
     @Override
     //Implemented manually because Lombok returns reference to field itself, not copy nor unmodifiable wrapper

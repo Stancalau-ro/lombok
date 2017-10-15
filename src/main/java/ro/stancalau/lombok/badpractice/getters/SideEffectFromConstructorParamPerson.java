@@ -1,9 +1,8 @@
-package ro.stancalau.lombok.badpractice.constructor;
+package ro.stancalau.lombok.badpractice.getters;
 
 import com.sun.istack.internal.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import ro.stancalau.lombok.api.Person;
 
@@ -12,20 +11,24 @@ import java.util.Set;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
-public class LombokRequiredArgsConstructorPerson implements Person {
+public class SideEffectFromConstructorParamPerson implements Person {
 
-    @NonNull
     private String name;
-    @NonNull
     private Set<Person> children;
 
-    public LombokRequiredArgsConstructorPerson() {
+    public SideEffectFromConstructorParamPerson() {
         this(DEFAULT_NAME);
     }
 
-    public LombokRequiredArgsConstructorPerson(@NotNull String name) {
+    public SideEffectFromConstructorParamPerson(@NotNull String name) {
         this(name, new HashSet<>());
+    }
+
+    public SideEffectFromConstructorParamPerson(@NotNull String name, @NonNull Set<Person> children) {
+        setName(name);
+
+        //Here, there we should set a copy of the parameter set, or call the setter
+        this.children = children;
     }
 
     @Override

@@ -1,24 +1,24 @@
 package ro.stancalau.lombok.badpractice.constructor;
 
+import ro.stancalau.lombok.api.MutablePersonTest;
 import ro.stancalau.lombok.api.Person;
-import ro.stancalau.lombok.api.PersonTest;
 
 import java.util.Set;
 
-public class LombokRequiredArgsConstructorPersonTest extends PersonTest {
+public class RequiredArgsConstructorPersonTest extends MutablePersonTest {
 
     @Override
-    protected Person createPerson(String name, Set<Person> children) {
+    public Person createPerson(String name, Set<Person> children) {
         return new LombokRequiredArgsConstructorPerson(name, children);
     }
 
     @Override
-    protected Person createPerson(String name) {
+    public Person createPerson(String name) {
         return new LombokRequiredArgsConstructorPerson(name);
     }
 
     @Override
-    protected Person createPerson() {
+    public Person createPerson() {
         return new LombokRequiredArgsConstructorPerson();
     }
 }

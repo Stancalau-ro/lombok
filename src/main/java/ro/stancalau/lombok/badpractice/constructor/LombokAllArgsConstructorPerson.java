@@ -4,12 +4,14 @@ import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import ro.stancalau.lombok.api.Person;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
+@Setter
 @AllArgsConstructor
 public class LombokAllArgsConstructorPerson implements Person {
 
@@ -21,16 +23,20 @@ public class LombokAllArgsConstructorPerson implements Person {
     }
 
     public LombokAllArgsConstructorPerson(@NotNull String name) {
-        this.name = name;
-
-        //Cannot be Collections.emptySet() as that would be immutable and the .add method would throw exception.
-        this.children = new HashSet<>();
+        setName(name);
+        setChildren(new HashSet<>());
     }
 
     @Override
     //Implemented manually because Lombok returns reference to field itself, not copy nor unmodifiable wrapper
     public Set<Person> getChildren() {
         return new HashSet<>(children);
+    }
+
+    @Override
+    //Implemented manually because Lombok sets reference directly to field itself, not copying collection
+    public void setChildren(Set<Person> children) {
+        this.children = new HashSet<>(children);
     }
 
     @Override
