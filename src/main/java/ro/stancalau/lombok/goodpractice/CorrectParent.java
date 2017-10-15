@@ -1,28 +1,31 @@
-package ro.stancalau.lombok.badpractice.constructor;
+package ro.stancalau.lombok.goodpractice;
 
-import com.sun.istack.internal.NotNull;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import ro.stancalau.lombok.api.Parent;
 import ro.stancalau.lombok.api.Person;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
-@NoArgsConstructor
-public class LombokNoArgsConstructorPerson implements Person {
+public class CorrectParent implements Parent {
 
     private String name;
     private Set<Person> children;
 
-    public LombokNoArgsConstructorPerson(@NotNull String name) {
-        this(name, new HashSet<>());
+    public CorrectParent() {
+        this(DEFAULT_NAME);
     }
 
-    public LombokNoArgsConstructorPerson(@NotNull String name, @NonNull Set<Person> children) {
+    public CorrectParent(@NonNull String name) {
+        this(name, Collections.emptySet());
+    }
+
+    public CorrectParent(@NonNull String name, @NonNull Set<Person> children) {
         setName(name);
         setChildren(children);
     }
@@ -36,6 +39,7 @@ public class LombokNoArgsConstructorPerson implements Person {
     @Override
     //Implemented manually because Lombok sets reference directly to field itself, not copying collection
     public void setChildren(Set<Person> children) {
+        //Setting copy as otherwise, changes in passed set would mirror in this instance's state.
         this.children = new HashSet<>(children);
     }
 

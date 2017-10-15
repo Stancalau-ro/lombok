@@ -1,32 +1,35 @@
-package ro.stancalau.lombok.goodpractice;
+package ro.stancalau.lombok.badpractice.getters;
 
+import com.sun.istack.internal.NotNull;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import ro.stancalau.lombok.api.Parent;
 import ro.stancalau.lombok.api.Person;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
-public class CorrectMutablePerson implements Person {
+public class SideEffectFromConstructorParamParent implements Parent {
 
     private String name;
     private Set<Person> children;
 
-    public CorrectMutablePerson() {
+    public SideEffectFromConstructorParamParent() {
         this(DEFAULT_NAME);
     }
 
-    public CorrectMutablePerson(@NonNull String name) {
-        this(name, Collections.emptySet());
+    public SideEffectFromConstructorParamParent(@NotNull String name) {
+        this(name, new HashSet<>());
     }
 
-    public CorrectMutablePerson(@NonNull String name, @NonNull Set<Person> children) {
+    public SideEffectFromConstructorParamParent(@NotNull String name, @NonNull Set<Person> children) {
         setName(name);
-        setChildren(children);
+
+        //Here, there we should set a copy of the parameter set, or call the setter
+        this.children = children;
     }
 
     @Override
@@ -38,7 +41,6 @@ public class CorrectMutablePerson implements Person {
     @Override
     //Implemented manually because Lombok sets reference directly to field itself, not copying collection
     public void setChildren(Set<Person> children) {
-        //Setting copy as otherwise, changes in passed set would mirror in this instance's state.
         this.children = new HashSet<>(children);
     }
 

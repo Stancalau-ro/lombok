@@ -3,6 +3,7 @@ package ro.stancalau.lombok.badpractice.setters;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import ro.stancalau.lombok.api.Parent;
 import ro.stancalau.lombok.api.Person;
 
 import java.util.HashSet;
@@ -10,21 +11,21 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class SideEffectFromSetterPerson implements Person {
+public class SideEffectFromSetterParent implements Parent {
 
     private String name;
     private Set<Person> children;
 
-    public SideEffectFromSetterPerson() {
+    public SideEffectFromSetterParent() {
         this(DEFAULT_NAME);
     }
 
-    public SideEffectFromSetterPerson(@NonNull String name) {
+    public SideEffectFromSetterParent(@NonNull String name) {
         //Here we instantiate with new set, as Collections.emptySet() is immutable.
         this(name, new HashSet<>());
     }
 
-    public SideEffectFromSetterPerson(@NonNull String name, @NonNull Set<Person> children) {
+    public SideEffectFromSetterParent(@NonNull String name, @NonNull Set<Person> children) {
         setName(name);
         setChildren(children);
     }

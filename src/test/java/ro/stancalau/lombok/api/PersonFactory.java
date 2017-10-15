@@ -2,11 +2,11 @@ package ro.stancalau.lombok.api;
 
 import java.util.Set;
 
-public interface PersonFactory {
+public interface PersonFactory<T extends Person> {
 
-    Person createPerson(String name, Set<Person> children);
+    T createPerson(String name, Set<Person> children);
 
-    Person createPerson(String name);
+    T createPerson(String name);
 
-    Person createPerson();
+    T createPerson();
 }

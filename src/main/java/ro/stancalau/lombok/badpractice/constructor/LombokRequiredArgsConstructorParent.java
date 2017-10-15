@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import ro.stancalau.lombok.api.Parent;
 import ro.stancalau.lombok.api.Person;
 
 import java.util.HashSet;
@@ -13,18 +14,18 @@ import java.util.Set;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class LombokRequiredArgsConstructorPerson implements Person {
+public class LombokRequiredArgsConstructorParent implements Parent {
 
     @NonNull
     private String name;
     @NonNull
     private Set<Person> children;
 
-    public LombokRequiredArgsConstructorPerson() {
+    public LombokRequiredArgsConstructorParent() {
         this(DEFAULT_NAME);
     }
 
-    public LombokRequiredArgsConstructorPerson(@NotNull String name) {
+    public LombokRequiredArgsConstructorParent(@NotNull String name) {
         this(name, new HashSet<>());
     }
 

@@ -1,9 +1,11 @@
-package ro.stancalau.lombok.badpractice.getters;
+package ro.stancalau.lombok.badpractice.constructor;
 
 import com.sun.istack.internal.NotNull;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import ro.stancalau.lombok.api.Parent;
 import ro.stancalau.lombok.api.Person;
 
 import java.util.HashSet;
@@ -11,24 +13,25 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class SideEffectsFromGetterPerson implements Person {
+@NoArgsConstructor
+public class LombokNoArgsConstructorParent implements Parent {
 
     private String name;
     private Set<Person> children;
 
-    public SideEffectsFromGetterPerson() {
-        this(DEFAULT_NAME);
-    }
-
-    public SideEffectsFromGetterPerson(@NotNull String name) {
+    public LombokNoArgsConstructorParent(@NotNull String name) {
         this(name, new HashSet<>());
     }
 
-    public SideEffectsFromGetterPerson(@NotNull String name, @NonNull Set<Person> children) {
-        this.name = name;
+    public LombokNoArgsConstructorParent(@NotNull String name, @NonNull Set<Person> children) {
+        setName(name);
+        setChildren(children);
+    }
 
-        //Setting copy as otherwise, changes in passed set would mirror in this instance's state.
-        this.children = new HashSet<>(children);
+    @Override
+    //Implemented manually because Lombok returns reference to field itself, not copy nor unmodifiable wrapper
+    public Set<Person> getChildren() {
+        return new HashSet<>(children);
     }
 
     @Override
