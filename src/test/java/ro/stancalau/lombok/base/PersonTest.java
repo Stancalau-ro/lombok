@@ -16,10 +16,10 @@ public abstract class PersonTest<T extends Person> implements PersonFactory<T> {
     @Test
     public void givenPersonConstructedWithNoArgsWhenGetNameThenItIsDefault() throws Exception {
         //given
-        T joe = createPerson();
+        T person = createPerson();
 
         //when
-        String name = joe.getName();
+        String name = person.getName();
 
         //then
         assertEquals(Person.DEFAULT_NAME, name);
@@ -28,13 +28,13 @@ public abstract class PersonTest<T extends Person> implements PersonFactory<T> {
     @Test
     public void givenPersonWhenSetNameThenGetUpdatedName() throws Exception {
         //given
-        T joe = createPerson(NAME);
+        T person = createPerson(NAME);
 
         //when
-        joe.setName(NEW_NAME);
+        person.setName(NEW_NAME);
 
         //then
-        assertEquals(NEW_NAME, joe.getName());
+        assertEquals(NEW_NAME, person.getName());
     }
 
     @Test(expected = NullPointerException.class)
@@ -49,10 +49,10 @@ public abstract class PersonTest<T extends Person> implements PersonFactory<T> {
     @Test
     public void givenPersonWhenWhenCheckingModifiersOfNameFieldThenFieldIsDeclaredPrivate() throws Exception {
         //given
-        T joe = createPerson(NAME);
+        T person = createPerson(NAME);
 
         //when
-        int nameModifiers = joe.getClass().getDeclaredField("name").getModifiers();
+        int nameModifiers = person.getClass().getDeclaredField("name").getModifiers();
 
         //then
         assertTrue(Modifier.isPrivate(nameModifiers));

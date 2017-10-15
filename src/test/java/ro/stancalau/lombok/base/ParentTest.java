@@ -30,34 +30,34 @@ public abstract class ParentTest extends PersonTest<Parent> implements ParentFac
     @Test
     public void givenValuesWhenConstructingParentThenGettersReturnOriginalValues() throws Exception {
         //when
-        Parent joe = createPerson(NAME, globalChildren);
+        Parent parent = createPerson(NAME, globalChildren);
 
         //then
-        assertEquals(NAME, joe.getName());
-        assertEquals(2, joe.getChildren().size());
-        assertEquals(globalChildren, joe.getChildren());
+        assertEquals(NAME, parent.getName());
+        assertEquals(2, parent.getChildren().size());
+        assertEquals(globalChildren, parent.getChildren());
     }
 
     @Test
     public void givenParentWhenMutatingChildListAsSideEffectThenParentStateDoesNotChange() throws Exception {
         //given
-        Parent joe = createPerson(NAME, globalChildren);
+        Parent parent = createPerson(NAME, globalChildren);
 
         //when
-        joe.getChildren().add(ILLEGITIMATE_CHILD);
+        parent.getChildren().add(ILLEGITIMATE_CHILD);
 
         //then
-        assertEquals(2, joe.getChildren().size());
-        assertEquals(globalChildren, joe.getChildren());
+        assertEquals(2, parent.getChildren().size());
+        assertEquals(globalChildren, parent.getChildren());
     }
 
     @Test
     public void givenParentWhenMutatingChildListAsSideEffectThenGlobalSetDoesNotChange() throws Exception {
         //given
-        Parent joe = createPerson(NAME, globalChildren);
+        Parent parent = createPerson(NAME, globalChildren);
 
         //when
-        joe.getChildren().add(ILLEGITIMATE_CHILD);
+        parent.getChildren().add(ILLEGITIMATE_CHILD);
 
         //then
         assertEquals(2, globalChildren.size());
@@ -66,46 +66,46 @@ public abstract class ParentTest extends PersonTest<Parent> implements ParentFac
     @Test
     public void givenParentWhenMutatingGlobalSetThenParentChildrenDoNotChange() throws Exception {
         //given
-        Parent joe = createPerson(NAME, globalChildren);
+        Parent parent = createPerson(NAME, globalChildren);
 
         //when
         globalChildren.add(ILLEGITIMATE_CHILD);
 
         //then
-        assertEquals(2, joe.getChildren().size());
+        assertEquals(2, parent.getChildren().size());
     }
 
     @Test
     public void givenParentWhenAddingChildThenChildCountIncreases() throws Exception {
         //given
-        Parent joe = createPerson(NAME, globalChildren);
+        Parent parent = createPerson(NAME, globalChildren);
 
         //when
-        joe.addChild(ILLEGITIMATE_CHILD);
+        parent.addChild(ILLEGITIMATE_CHILD);
 
         //then
-        assertEquals(3, joe.getChildren().size());
+        assertEquals(3, parent.getChildren().size());
     }
 
     @Test
     public void givenParentWhenAddingChildThenNewChildIsContainedInChildren() throws Exception {
         //given
-        Parent joe = createPerson(NAME, globalChildren);
+        Parent parent = createPerson(NAME, globalChildren);
 
         //when
-        joe.addChild(ILLEGITIMATE_CHILD);
+        parent.addChild(ILLEGITIMATE_CHILD);
 
         //then
-        assertTrue(joe.getChildren().contains(ILLEGITIMATE_CHILD));
+        assertTrue(parent.getChildren().contains(ILLEGITIMATE_CHILD));
     }
 
     @Test
     public void givenParentWhenAddingChildThenGlobalSetSizeDoesNotChange() throws Exception {
         //given
-        Parent joe = createPerson(NAME, globalChildren);
+        Parent parent = createPerson(NAME, globalChildren);
 
         //when
-        joe.addChild(ILLEGITIMATE_CHILD);
+        parent.addChild(ILLEGITIMATE_CHILD);
 
         //then
         assertEquals(2, globalChildren.size());
@@ -114,10 +114,10 @@ public abstract class ParentTest extends PersonTest<Parent> implements ParentFac
     @Test
     public void givenParentWhenAddingChildThenNewChildNotContainedInGlobalSet() throws Exception {
         //given
-        Parent joe = createPerson(NAME, globalChildren);
+        Parent parent = createPerson(NAME, globalChildren);
 
         //when
-        joe.addChild(ILLEGITIMATE_CHILD);
+        parent.addChild(ILLEGITIMATE_CHILD);
 
         //then
         assertFalse(globalChildren.contains(ILLEGITIMATE_CHILD));
@@ -144,84 +144,84 @@ public abstract class ParentTest extends PersonTest<Parent> implements ParentFac
     @Test
     public void givenOnlyNameWhenConstructingThenChildrenSetSizeIsZero() throws Exception {
         //when
-        Parent joe = createPerson(NAME);
+        Parent parent = createPerson(NAME);
 
         //then
-        assertEquals(0, joe.getChildren().size());
+        assertEquals(0, parent.getChildren().size());
     }
 
     @Test
     public void givenParentConstructedByNameWhenAddChildThenChildCountIncreases() throws Exception {
         //given
-        Parent joe = createPerson(NAME);
+        Parent parent = createPerson(NAME);
 
         //when
-        joe.addChild(ILLEGITIMATE_CHILD);
+        parent.addChild(ILLEGITIMATE_CHILD);
 
         //then
-        assertEquals(1, joe.getChildren().size());
+        assertEquals(1, parent.getChildren().size());
     }
 
     @Test
     public void givenNoParamsWhenConstructThenChildrenSetSizeIsZero() throws Exception {
         //when
-        Parent joe = createPerson();
+        Parent parent = createPerson();
 
         //then
-        assertEquals(0, joe.getChildren().size());
+        assertEquals(0, parent.getChildren().size());
     }
 
     @Test
     public void givenParentConstructedWithNoArgsWhenAddChildThenChildCountIncreases() throws Exception {
         //given
-        Parent joe = createPerson();
+        Parent parent = createPerson();
 
         //when
-        joe.addChild(ILLEGITIMATE_CHILD);
+        parent.addChild(ILLEGITIMATE_CHILD);
 
         //then
-        assertEquals(1, joe.getChildren().size());
+        assertEquals(1, parent.getChildren().size());
     }
 
     @Test
     public void givenParentWhenSetChildrenThenGetUpdatedChildrenSet() throws Exception {
         //given
-        Parent joe = createPerson(NAME, globalChildren);
+        Parent parent = createPerson(NAME, globalChildren);
 
         //when
         Set<Person> newChildren = Collections.singleton(createPerson(NEW_NAME));
-        joe.setChildren(newChildren);
+        parent.setChildren(newChildren);
 
         //then
-        assertEquals(newChildren, joe.getChildren());
+        assertEquals(newChildren, parent.getChildren());
     }
 
     @Test
     public void givenParentWithSetChildrenWhenOriginalSetChangesThenParentChildrenDoNotChange() throws Exception {
         //given
-        Parent joe = createPerson(NAME);
+        Parent parent = createPerson(NAME);
         Set<Person> newChildren = new HashSet<>();
-        joe.setChildren(newChildren);
+        parent.setChildren(newChildren);
         int childCount = newChildren.size();
 
         //when
         newChildren.add(ILLEGITIMATE_CHILD);
 
         //then
-        assertEquals(childCount, joe.getChildren().size());
-        assertFalse(joe.getChildren().contains(ILLEGITIMATE_CHILD));
+        assertEquals(childCount, parent.getChildren().size());
+        assertFalse(parent.getChildren().contains(ILLEGITIMATE_CHILD));
     }
 
     @Test
     public void givenParentWithSetChildrenWhenParentChildAddedThenOriginalSetNotChanged() throws Exception {
         //given
-        Parent joe = createPerson(NAME);
+        Parent parent = createPerson(NAME);
         Set<Person> newChildren = new HashSet<>();
-        joe.setChildren(newChildren);
+        parent.setChildren(newChildren);
         int childCount = newChildren.size();
 
         //when
-        joe.addChild(ILLEGITIMATE_CHILD);
+        parent.addChild(ILLEGITIMATE_CHILD);
 
         //then
         assertEquals(childCount, newChildren.size());
