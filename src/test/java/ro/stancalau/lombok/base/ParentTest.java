@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ro.stancalau.lombok.api.Parent;
 import ro.stancalau.lombok.api.Person;
-import ro.stancalau.lombok.examples.goodpractice.MutableParent;
+import ro.stancalau.lombok.examples.acceptable.MutableParent;
 
 import java.util.Collections;
 import java.util.HashSet;
