@@ -21,7 +21,7 @@ public abstract class MutableParentTest extends MutablePersonTest<MutableParent>
     private Set<MutablePerson> globalChildren;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUpChildren() throws Exception {
         globalChildren = new HashSet<>();
         globalChildren.add(new MutableParentImpl(BOY_NAME));
         globalChildren.add(new MutableParentImpl(GIRL_NAME));
