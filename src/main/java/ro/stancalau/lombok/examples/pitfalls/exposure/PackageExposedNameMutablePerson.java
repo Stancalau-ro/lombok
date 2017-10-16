@@ -4,17 +4,17 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import ro.stancalau.lombok.api.Person;
+import ro.stancalau.lombok.api.MutablePerson;
 
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class PackageExposedNamePerson implements Person {
+public class PackageExposedNameMutablePerson implements MutablePerson {
 
     @NonNull
     String name;
 
-    public PackageExposedNamePerson() {
+    public PackageExposedNameMutablePerson() {
         this(DEFAULT_NAME);
     }
 }

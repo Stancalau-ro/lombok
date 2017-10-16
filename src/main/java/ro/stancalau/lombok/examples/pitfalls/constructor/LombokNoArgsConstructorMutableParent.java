@@ -1,48 +1,48 @@
 package ro.stancalau.lombok.examples.pitfalls.constructor;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
-import ro.stancalau.lombok.api.Parent;
-import ro.stancalau.lombok.api.Person;
+import ro.stancalau.lombok.api.MutableParent;
+import ro.stancalau.lombok.api.MutablePerson;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
-@AllArgsConstructor
-public class LombokAllArgsConstructorParent implements Parent {
+@NoArgsConstructor
+public class LombokNoArgsConstructorMutableParent implements MutableParent {
 
     @NonNull
     private String name;
     @NonNull
-    private Set<Person> children;
+    private Set<MutablePerson> children;
 
-    public LombokAllArgsConstructorParent() {
-        this(DEFAULT_NAME);
+    public LombokNoArgsConstructorMutableParent(String name) {
+        this(name, new HashSet<>());
     }
 
-    public LombokAllArgsConstructorParent(String name) {
+    public LombokNoArgsConstructorMutableParent(String name, Set<MutablePerson> children) {
         setName(name);
-        setChildren(new HashSet<>());
+        setChildren(children);
     }
 
     @Override
     //Implemented manually because Lombok returns reference to field itself, not copy nor unmodifiable wrapper
-    public Set<Person> getChildren() {
+    public Set<MutablePerson> getChildren() {
         return new HashSet<>(children);
     }
 
     @Override
     //Implemented manually because Lombok sets reference directly to field itself, not copying collection
-    public void setChildren(Set<Person> children) {
+    public void setChildren(Set<MutablePerson> children) {
         this.children = new HashSet<>(children);
     }
 
     @Override
-    public void addChild(@NonNull Person child) {
+    public void addChild(@NonNull MutablePerson child) {
         children.add(child);
     }
 }

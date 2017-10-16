@@ -3,8 +3,8 @@ package ro.stancalau.lombok.examples.acceptable;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import ro.stancalau.lombok.api.Parent;
-import ro.stancalau.lombok.api.Person;
+import ro.stancalau.lombok.api.MutableParent;
+import ro.stancalau.lombok.api.MutablePerson;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -12,41 +12,41 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class MutableParent implements Parent {
+public class MutableParentImpl implements MutableParent {
 
     @NonNull
     private String name;
     @NonNull
-    private Set<Person> children;
+    private Set<MutablePerson> children;
 
-    public MutableParent() {
+    public MutableParentImpl() {
         this(DEFAULT_NAME);
     }
 
-    public MutableParent(String name) {
+    public MutableParentImpl(String name) {
         this(name, Collections.emptySet());
     }
 
-    public MutableParent(String name, Set<Person> children) {
+    public MutableParentImpl(String name, Set<MutablePerson> children) {
         setName(name);
         setChildren(children);
     }
 
     @Override
     //Implemented manually because Lombok returns reference to field itself, not copy nor unmodifiable wrapper
-    public Set<Person> getChildren() {
+    public Set<MutablePerson> getChildren() {
         return new HashSet<>(children);
     }
 
     @Override
     //Implemented manually because Lombok sets reference directly to field itself, not copying collection
-    public void setChildren(Set<Person> children) {
+    public void setChildren(Set<MutablePerson> children) {
         //Setting copy as otherwise, changes in passed set would mirror in this instance's state.
         this.children = new HashSet<>(children);
     }
 
     @Override
-    public void addChild(@NonNull Person child) {
+    public void addChild(@NonNull MutablePerson child) {
         children.add(child);
     }
 }

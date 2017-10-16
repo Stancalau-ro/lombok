@@ -1,10 +1,8 @@
 package ro.stancalau.lombok.api;
 
-public interface Person {
+public interface ImmutablePerson {
 
     String DEFAULT_NAME = "JohnDoe";
 
     String getName();
-
-    void setName(String name);
 }

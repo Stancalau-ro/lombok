@@ -1,14 +1,14 @@
 package ro.stancalau.lombok.base;
 
 import org.junit.Test;
-import ro.stancalau.lombok.api.Person;
+import ro.stancalau.lombok.api.MutablePerson;
 
 import java.lang.reflect.Modifier;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public abstract class PersonTest<T extends Person> implements PersonFactory<T> {
+public abstract class MutablePersonTest<T extends MutablePerson> implements PersonFactory<T> {
 
     protected static final String NAME = "Joe";
     protected static final String NEW_NAME = "Jerome";
@@ -22,7 +22,7 @@ public abstract class PersonTest<T extends Person> implements PersonFactory<T> {
         String name = person.getName();
 
         //then
-        assertEquals(Person.DEFAULT_NAME, name);
+        assertEquals(MutablePerson.DEFAULT_NAME, name);
     }
 
     @Test
