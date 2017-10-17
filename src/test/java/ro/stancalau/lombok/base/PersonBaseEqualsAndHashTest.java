@@ -4,19 +4,20 @@ import org.junit.Before;
 import org.junit.Test;
 import ro.stancalau.lombok.api.ImmutablePerson;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public abstract class PersonBaseEqualsAndHashTest<T extends ImmutablePerson> implements PersonFactory<T> {
 
     private T person;
     private T samePerson;
+    private T sameClone;
     private T stranger;
 
     @Before
     public void setUp() throws Exception {
         person = createPerson();
         samePerson = createPerson();
+        sameClone = createPerson();
         stranger = createPerson("Stranger");
     }
 
@@ -26,22 +27,28 @@ public abstract class PersonBaseEqualsAndHashTest<T extends ImmutablePerson> imp
     }
 
     @Test
-    public void testEqualsToSelf() throws Exception {
+    public void testReflexive() throws Exception {
         assertTrue(person.equals(person));
-        assertTrue(stranger.equals(stranger));
     }
 
     @Test
-    public void givenTwoPeopleWithDifferentNameWhenEqualsThenReturnFalse() throws Exception {
+    public void testSymmetric() throws Exception {
         assertFalse(person.equals(stranger));
         assertFalse(stranger.equals(person));
+
+        assertTrue(person.equals(samePerson));
+        assertTrue(samePerson.equals(person));
     }
 
     @Test
-    public void givenPersonWithSameStateWhenEqualsThenReturnTrue() throws Exception {
+    public void testTransitive() throws Exception {
         assertTrue(person.equals(samePerson));
+        assertTrue(samePerson.equals(sameClone));
+        assertTrue(sameClone.equals(person));
     }
 
-    //TODO add more tests for equals and hash
-
+    @Test
+    public void givenPersonsWithSameStateWhenCompareHashCodesThenAreEqual() throws Exception {
+        assertEquals(person.hashCode(), samePerson.hashCode());
+    }
 }
