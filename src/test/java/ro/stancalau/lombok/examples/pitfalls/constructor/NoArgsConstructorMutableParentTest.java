@@ -11,16 +11,16 @@ public class NoArgsConstructorMutableParentTest extends MutableParentTest {
 
     @Override
     public MutableParent createPerson(String name, Set<MutablePerson> children) {
-        return new LombokNoArgsConstructorMutableParent(name, children);
+        return new NoArgsConstructorMutableParent(name, children);
     }
 
     @Override
     public MutableParent createPerson(String name) {
-        return new LombokNoArgsConstructorMutableParent(name);
+        return new NoArgsConstructorMutableParent(name);
     }
 
     @Override
     public MutableParent createPerson() {
-        return new LombokNoArgsConstructorMutableParent();
+        return new NoArgsConstructorMutableParent();
     }
 }

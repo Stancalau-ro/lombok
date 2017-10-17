@@ -1,8 +1,8 @@
 package ro.stancalau.lombok.examples.pitfalls.constructor;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import ro.stancalau.lombok.api.MutableParent;
 import ro.stancalau.lombok.api.MutablePerson;
@@ -12,21 +12,20 @@ import java.util.Set;
 
 @Getter
 @Setter
-@AllArgsConstructor
-public class LombokAllArgsConstructorMutableParent implements MutableParent {
+@RequiredArgsConstructor
+public class RequiredArgsConstructorMutableParent implements MutableParent {
 
     @NonNull
     private String name;
     @NonNull
     private Set<MutablePerson> children;
 
-    public LombokAllArgsConstructorMutableParent() {
+    public RequiredArgsConstructorMutableParent() {
         this(DEFAULT_NAME);
     }
 
-    public LombokAllArgsConstructorMutableParent(String name) {
-        setName(name);
-        setChildren(new HashSet<>());
+    public RequiredArgsConstructorMutableParent(String name) {
+        this(name, new HashSet<>());
     }
 
     @Override
