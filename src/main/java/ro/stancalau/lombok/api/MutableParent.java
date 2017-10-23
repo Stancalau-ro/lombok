@@ -4,9 +4,7 @@ import lombok.NonNull;
 
 import java.util.Set;
 
-public interface MutableParent extends MutablePerson {
-
-    Set<MutablePerson> getChildren();
+public interface MutableParent extends MutablePerson, ImmutableParent {
 
     void setChildren(Set<MutablePerson> children);
 
