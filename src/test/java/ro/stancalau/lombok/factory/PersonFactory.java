@@ -1,4 +1,4 @@
-package ro.stancalau.lombok.base;
+package ro.stancalau.lombok.factory;
 
 import ro.stancalau.lombok.api.ImmutablePerson;
 

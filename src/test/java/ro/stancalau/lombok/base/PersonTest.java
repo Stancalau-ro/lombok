@@ -3,6 +3,7 @@ package ro.stancalau.lombok.base;
 import org.junit.Test;
 import ro.stancalau.lombok.api.ImmutablePerson;
 import ro.stancalau.lombok.api.MutablePerson;
+import ro.stancalau.lombok.factory.PersonFactory;
 
 import java.lang.reflect.Modifier;
 

@@ -11,7 +11,7 @@ import static org.junit.Assert.assertTrue;
 public abstract class ImmutablePersonTest<T extends ImmutablePerson> extends PersonTest<T> {
 
     @Test
-    public void givenImmutableTypeWhenGetAllFieldsThenAllFiledsAreFinalAndPrivate() throws Exception {
+    public void givenImmutableTypeWhenGetAllFieldsThenAllFieldsAreFinalAndPrivate() throws Exception {
         //given
         T person = createPerson();
 

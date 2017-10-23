@@ -5,6 +5,7 @@ import org.junit.Test;
 import ro.stancalau.lombok.api.MutableParent;
 import ro.stancalau.lombok.api.MutablePerson;
 import ro.stancalau.lombok.examples.acceptable.MutableParentImpl;
+import ro.stancalau.lombok.factory.ParentFactory;
 
 import java.util.Collections;
 import java.util.HashSet;
