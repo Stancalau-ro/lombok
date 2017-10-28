@@ -1,12 +1,13 @@
-package ro.stancalau.lombok.base.parent;
+package ro.stancalau.lombok.tests.parent;
 
 import org.junit.Test;
 import ro.stancalau.lombok.api.MutableParent;
-import ro.stancalau.lombok.factory.ParentCreator;
+import ro.stancalau.lombok.tests.base.ParentBaseTest;
 
 import static org.junit.Assert.*;
+import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 
-public abstract class ParentChildrenAddingTests<T extends MutableParent> extends ParentCreator<T> {
+public abstract class ParentChildrenAddingTests<T extends MutableParent> extends ParentBaseTest<T> {
 
     public ParentChildrenAddingTests(Class<T> clazz) {
         super(clazz);

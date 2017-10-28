@@ -1,18 +1,19 @@
-package ro.stancalau.lombok.base.person;
+package ro.stancalau.lombok.tests.person;
 
 import org.junit.Test;
 import ro.stancalau.lombok.api.ImmutablePerson;
 import ro.stancalau.lombok.api.MutablePerson;
-import ro.stancalau.lombok.factory.PersonCreator;
+import ro.stancalau.lombok.tests.base.PersonBaseTest;
 
 import java.lang.reflect.Modifier;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 
-public abstract class PersonConstructorsAndGettersTests<T extends ImmutablePerson> extends PersonCreator<T> {
+public abstract class PersonConstructorAndGetterTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
-    public PersonConstructorsAndGettersTests(Class<T> clazz) {
+    public PersonConstructorAndGetterTests(Class<T> clazz) {
         super(clazz);
     }
 

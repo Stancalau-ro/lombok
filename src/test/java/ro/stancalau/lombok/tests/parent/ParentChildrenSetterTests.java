@@ -1,9 +1,9 @@
-package ro.stancalau.lombok.base.parent;
+package ro.stancalau.lombok.tests.parent;
 
 import org.junit.Test;
 import ro.stancalau.lombok.api.MutableParent;
 import ro.stancalau.lombok.api.MutablePerson;
-import ro.stancalau.lombok.factory.ParentCreator;
+import ro.stancalau.lombok.tests.base.ParentBaseTest;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -11,8 +11,10 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static ro.stancalau.lombok.tests.base.TestNames.NAME;
+import static ro.stancalau.lombok.tests.base.TestNames.NEW_NAME;
 
-public abstract class ParentChildrenSetterTests<T extends MutableParent> extends ParentCreator<T> {
+public abstract class ParentChildrenSetterTests<T extends MutableParent> extends ParentBaseTest<T> {
 
     public ParentChildrenSetterTests(Class<T> clazz) {
         super(clazz);

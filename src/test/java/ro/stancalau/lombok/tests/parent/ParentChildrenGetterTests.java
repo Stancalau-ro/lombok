@@ -1,12 +1,13 @@
-package ro.stancalau.lombok.base.parent;
+package ro.stancalau.lombok.tests.parent;
 
 import org.junit.Test;
 import ro.stancalau.lombok.api.ImmutableParent;
-import ro.stancalau.lombok.factory.ParentCreator;
+import ro.stancalau.lombok.tests.base.ParentBaseTest;
 
 import static org.junit.Assert.assertEquals;
+import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 
-public abstract class ParentChildrenGetterTests<T extends ImmutableParent> extends ParentCreator<T> {
+public abstract class ParentChildrenGetterTests<T extends ImmutableParent> extends ParentBaseTest<T> {
 
     public ParentChildrenGetterTests(Class<T> clazz) {
         super(clazz);

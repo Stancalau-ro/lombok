@@ -1,6 +1,6 @@
 package ro.stancalau.lombok.examples.pitfalls.constructor;
 
-import ro.stancalau.lombok.base.parent.ParentConstructorTests;
+import ro.stancalau.lombok.tests.parent.ParentConstructorTests;
 
 public class AllArgsConstructorMutableParentTest extends ParentConstructorTests<AllArgsConstructorMutableParent> {
 

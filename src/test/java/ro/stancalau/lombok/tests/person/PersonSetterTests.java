@@ -1,12 +1,14 @@
-package ro.stancalau.lombok.base.person;
+package ro.stancalau.lombok.tests.person;
 
 import org.junit.Test;
 import ro.stancalau.lombok.api.MutablePerson;
-import ro.stancalau.lombok.factory.PersonCreator;
+import ro.stancalau.lombok.tests.base.PersonBaseTest;
 
 import static org.junit.Assert.assertEquals;
+import static ro.stancalau.lombok.tests.base.TestNames.NAME;
+import static ro.stancalau.lombok.tests.base.TestNames.NEW_NAME;
 
-public abstract class PersonSetterTests<T extends MutablePerson> extends PersonCreator<T> {
+public abstract class PersonSetterTests<T extends MutablePerson> extends PersonBaseTest<T> {
 
     public PersonSetterTests(Class<T> clazz) {
         super(clazz);

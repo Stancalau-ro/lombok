@@ -1,15 +1,15 @@
-package ro.stancalau.lombok.base;
+package ro.stancalau.lombok.tests;
 
 import org.junit.Test;
 import ro.stancalau.lombok.api.ImmutablePerson;
-import ro.stancalau.lombok.factory.PersonCreator;
+import ro.stancalau.lombok.tests.base.PersonBaseTest;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import static org.junit.Assert.assertTrue;
 
-public abstract class FieldVisibilityTests<T extends ImmutablePerson> extends PersonCreator<T> {
+public abstract class FieldVisibilityTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
     public FieldVisibilityTests(Class<T> clazz) {
         super(clazz);

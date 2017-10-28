@@ -2,7 +2,7 @@ package ro.stancalau.lombok.examples.pitfalls.constructor;
 
 
 import ro.stancalau.lombok.api.MutableParent;
-import ro.stancalau.lombok.base.parent.ParentConstructorTests;
+import ro.stancalau.lombok.tests.parent.ParentConstructorTests;
 
 public class NoArgsConstructorMutableParentTest extends ParentConstructorTests<NoArgsConstructorMutableParent> {
 

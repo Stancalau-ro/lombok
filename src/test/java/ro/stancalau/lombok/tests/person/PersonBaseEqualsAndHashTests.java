@@ -1,13 +1,13 @@
-package ro.stancalau.lombok.base.person;
+package ro.stancalau.lombok.tests.person;
 
 import org.junit.Before;
 import org.junit.Test;
 import ro.stancalau.lombok.api.ImmutablePerson;
-import ro.stancalau.lombok.factory.PersonCreator;
+import ro.stancalau.lombok.tests.base.PersonBaseTest;
 
 import static org.junit.Assert.*;
 
-public abstract class PersonBaseEqualsAndHashTests<T extends ImmutablePerson> extends PersonCreator<T> {
+public abstract class PersonBaseEqualsAndHashTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
     private T person;
     private T samePerson;

@@ -1,19 +1,18 @@
-package ro.stancalau.lombok.factory;
+package ro.stancalau.lombok.tests.base;
 
 import org.junit.Before;
 import ro.stancalau.lombok.api.ImmutableParent;
 import ro.stancalau.lombok.api.MutablePerson;
 import ro.stancalau.lombok.examples.acceptable.MutableParentImpl;
+import ro.stancalau.lombok.factory.ParentReflectionFactory;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class ParentCreator<T extends ImmutableParent> extends ParentReflectionFactory<T> {
+import static ro.stancalau.lombok.tests.base.TestNames.BOY_NAME;
+import static ro.stancalau.lombok.tests.base.TestNames.GIRL_NAME;
 
-    protected static final String NAME = "Joe";
-    protected static final String NEW_NAME = "Jerome";
-    protected static final String BOY_NAME = "Joel";
-    protected static final String GIRL_NAME = "Jane";
+public class ParentBaseTest<T extends ImmutableParent> extends ParentReflectionFactory<T> {
 
     protected static final MutablePerson ILLEGITIMATE_CHILD = new MutableParentImpl("Bob");
 
@@ -26,7 +25,7 @@ public class ParentCreator<T extends ImmutableParent> extends ParentReflectionFa
         globalChildren.add(new MutableParentImpl(GIRL_NAME));
     }
 
-    public ParentCreator(Class<T> clazz) {
+    public ParentBaseTest(Class<T> clazz) {
         super(clazz);
     }
 }

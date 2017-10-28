@@ -1,6 +1,6 @@
 package ro.stancalau.lombok.examples.pitfalls.exposure;
 
-import ro.stancalau.lombok.base.person.PersonSetterTests;
+import ro.stancalau.lombok.tests.person.PersonSetterTests;
 
 public class PackageExposedNameMutablePersonTest extends PersonSetterTests<PackageExposedNameMutablePerson> {
 
