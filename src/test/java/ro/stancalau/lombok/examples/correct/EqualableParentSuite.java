@@ -10,7 +10,7 @@ import ro.stancalau.lombok.tests.parent.ParentChildrenGetterTests;
 import ro.stancalau.lombok.tests.parent.ParentChildrenSetterTests;
 import ro.stancalau.lombok.tests.parent.ParentConstructorTests;
 import ro.stancalau.lombok.tests.person.ExtendedEqualsSymmetryTest;
-import ro.stancalau.lombok.tests.person.MutableParentEqualsTests;
+import ro.stancalau.lombok.tests.person.MutableParentEqualsAndHashTests;
 import ro.stancalau.lombok.tests.person.PersonConstructorAndGetterTests;
 import ro.stancalau.lombok.tests.person.PersonSetterTests;
 
@@ -28,7 +28,7 @@ import static org.junit.runners.Suite.SuiteClasses;
         PersonConstructorAndGetterTests.class,
         PersonSetterTests.class,
         ExtendedEqualsSymmetryTest.class,
-        MutableParentEqualsTests.class
+        MutableParentEqualsAndHashTests.class
 })
 public class EqualableParentSuite {
 
