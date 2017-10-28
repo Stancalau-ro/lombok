@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ro.stancalau.lombok.api.MutableParent;
 import ro.stancalau.lombok.tests.base.ParentBaseTest;
+import ro.stancalau.lombok.tests.base.TestParam;
 
 import static org.junit.Assert.*;
 import static ro.stancalau.lombok.tests.base.TestNames.NAME;
@@ -12,8 +13,8 @@ import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 @RunWith(Parameterized.class)
 public class ParentChildrenAddingTests extends ParentBaseTest<MutableParent> {
 
-    public ParentChildrenAddingTests(Class<? extends MutableParent> clazz) {
-        super((Class<MutableParent>) clazz);
+    public ParentChildrenAddingTests(TestParam param) {
+        super((Class<MutableParent>) param.getClassUnderTest());
     }
 
     @Test

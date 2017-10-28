@@ -6,6 +6,7 @@ import org.junit.runners.Parameterized;
 import ro.stancalau.lombok.api.ImmutableParent;
 import ro.stancalau.lombok.api.MutablePerson;
 import ro.stancalau.lombok.tests.base.ParentBaseTest;
+import ro.stancalau.lombok.tests.base.TestParam;
 
 import java.util.Set;
 
@@ -15,8 +16,8 @@ import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 @RunWith(Parameterized.class)
 public class ParentConstructorTests<T extends ImmutableParent> extends ParentBaseTest<T> {
 
-    public ParentConstructorTests(Class<T> clazz) {
-        super(clazz);
+    public ParentConstructorTests(TestParam param) {
+        super((Class<T>) param.getClassUnderTest());
     }
 
     @Test

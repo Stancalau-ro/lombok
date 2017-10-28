@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ro.stancalau.lombok.api.ImmutablePerson;
 import ro.stancalau.lombok.tests.base.PersonBaseTest;
+import ro.stancalau.lombok.tests.base.TestParam;
 
 import static org.junit.Assert.*;
 
@@ -17,8 +18,8 @@ public class PersonBaseEqualsAndHashTests<T extends ImmutablePerson> extends Per
     private ImmutablePerson sameClone;
     private ImmutablePerson stranger;
 
-    public PersonBaseEqualsAndHashTests(Class<T> clazz) {
-        super(clazz);
+    public PersonBaseEqualsAndHashTests(TestParam param) {
+        super((Class<T>) param.getClassUnderTest());
     }
 
     @Before

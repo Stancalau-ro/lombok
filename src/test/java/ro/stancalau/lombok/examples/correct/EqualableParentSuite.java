@@ -3,6 +3,8 @@ package ro.stancalau.lombok.examples.correct;
 import com.github.peterwippermann.junit4.parameterizedsuite.ParameterizedSuite;
 import org.junit.runner.RunWith;
 import ro.stancalau.lombok.tests.FieldVisibilityTests;
+import ro.stancalau.lombok.tests.base.EqualableTestParam;
+import ro.stancalau.lombok.tests.base.TestParam;
 import ro.stancalau.lombok.tests.parent.ParentChildrenAddingTests;
 import ro.stancalau.lombok.tests.parent.ParentChildrenGetterTests;
 import ro.stancalau.lombok.tests.parent.ParentChildrenSetterTests;
@@ -28,12 +30,14 @@ import static org.junit.runners.Suite.SuiteClasses;
 public class EqualableParentSuite {
 
     private static final Class CLASS_UNDER_TEST = EqualableParent.class;
+    private static final Class CHILD_CLASS = ExtendedEqualableParent.class;
 
     @Parameters(name = "Class under test is {0}")
     public static Object[] params() {
-        return new Object[][]{{CLASS_UNDER_TEST}};
+        return new Object[][]{{new EqualableTestParam(CLASS_UNDER_TEST, CHILD_CLASS)}};
     }
 
     @Parameter
-    public Class clazz;
+    public TestParam param;
+
 }

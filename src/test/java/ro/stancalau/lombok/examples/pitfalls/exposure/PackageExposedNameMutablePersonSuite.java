@@ -3,6 +3,7 @@ package ro.stancalau.lombok.examples.pitfalls.exposure;
 import com.github.peterwippermann.junit4.parameterizedsuite.ParameterizedSuite;
 import org.junit.runner.RunWith;
 import ro.stancalau.lombok.tests.FieldVisibilityTests;
+import ro.stancalau.lombok.tests.base.TestParam;
 import ro.stancalau.lombok.tests.person.PersonConstructorAndGetterTests;
 import ro.stancalau.lombok.tests.person.PersonSetterTests;
 
@@ -22,9 +23,9 @@ public class PackageExposedNameMutablePersonSuite {
 
     @Parameters(name = "Class under test is {0}")
     public static Object[] params() {
-        return new Object[][]{{CLASS_UNDER_TEST}};
+        return new Object[][]{{new TestParam(CLASS_UNDER_TEST)}};
     }
 
     @Parameter
-    public Class clazz;
+    public TestParam param;
 }

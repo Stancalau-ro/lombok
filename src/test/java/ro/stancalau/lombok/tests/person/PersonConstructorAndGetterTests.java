@@ -6,14 +6,15 @@ import org.junit.runners.Parameterized;
 import ro.stancalau.lombok.api.ImmutablePerson;
 import ro.stancalau.lombok.api.MutablePerson;
 import ro.stancalau.lombok.tests.base.PersonBaseTest;
+import ro.stancalau.lombok.tests.base.TestParam;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class PersonConstructorAndGetterTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
-    public PersonConstructorAndGetterTests(Class<T> clazz) {
-        super(clazz);
+    public PersonConstructorAndGetterTests(TestParam param) {
+        super((Class<T>) param.getClassUnderTest());
     }
 
     @Test

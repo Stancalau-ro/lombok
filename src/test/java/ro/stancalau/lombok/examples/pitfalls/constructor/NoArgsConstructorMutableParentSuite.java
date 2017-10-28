@@ -3,6 +3,7 @@ package ro.stancalau.lombok.examples.pitfalls.constructor;
 import com.github.peterwippermann.junit4.parameterizedsuite.ParameterizedSuite;
 import org.junit.runner.RunWith;
 import ro.stancalau.lombok.tests.FieldVisibilityTests;
+import ro.stancalau.lombok.tests.base.TestParam;
 import ro.stancalau.lombok.tests.parent.ParentChildrenAddingTests;
 import ro.stancalau.lombok.tests.parent.ParentChildrenGetterTests;
 import ro.stancalau.lombok.tests.parent.ParentChildrenSetterTests;
@@ -30,9 +31,9 @@ public class NoArgsConstructorMutableParentSuite {
 
     @Parameters(name = "Class under test is {0}")
     public static Object[] params() {
-        return new Object[][]{{CLASS_UNDER_TEST}};
+        return new Object[][]{{new TestParam(CLASS_UNDER_TEST)}};
     }
 
     @Parameter
-    public Class clazz;
+    public TestParam param;
 }

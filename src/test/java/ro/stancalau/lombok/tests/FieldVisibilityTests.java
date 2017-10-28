@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ro.stancalau.lombok.api.ImmutablePerson;
 import ro.stancalau.lombok.tests.base.PersonBaseTest;
+import ro.stancalau.lombok.tests.base.TestParam;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -15,8 +16,8 @@ import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 @RunWith(Parameterized.class)
 public class FieldVisibilityTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
-    public FieldVisibilityTests(Class<T> clazz) {
-        super(clazz);
+    public FieldVisibilityTests(TestParam param) {
+        super((Class<T>) param.getClassUnderTest());
     }
 
     @Test
