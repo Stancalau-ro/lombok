@@ -1,34 +1,24 @@
 package ro.stancalau.lombok.tests.base;
 
-import com.github.peterwippermann.junit4.parameterizedsuite.ParameterContext;
 import org.junit.Before;
-import org.junit.runners.Parameterized;
 import ro.stancalau.lombok.api.ImmutableParent;
 import ro.stancalau.lombok.api.MutablePerson;
 import ro.stancalau.lombok.examples.correct.MutableParentImpl;
+import ro.stancalau.lombok.factory.ParentFactory;
 import ro.stancalau.lombok.factory.ParentReflectionFactory;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
 import static ro.stancalau.lombok.tests.base.TestNames.BOY_NAME;
 import static ro.stancalau.lombok.tests.base.TestNames.GIRL_NAME;
 
-public abstract class ParentBaseTest<T extends ImmutableParent> extends ParentReflectionFactory<T> {
-
-    @Parameterized.Parameters(name = "Class is {0}")
-    public static Iterable<Object[]> params() {
-        if (ParameterContext.isParameterSet()) {
-            return Collections.singletonList(ParameterContext.getParameter(Object[].class));
-        } else {
-            throw new AssertionError("No class parameter for execution");
-        }
-    }
+public abstract class ParentBaseTest<T extends ImmutableParent> extends ParameterizedTest implements ParentTest<T> {
 
     protected static final MutablePerson ILLEGITIMATE_CHILD = new MutableParentImpl("Bob");
-
     protected Set<MutablePerson> globalChildren;
+
+    private ParentFactory<T> factory;
 
     @Before
     public void setUpChildren() throws Exception {
@@ -38,6 +28,21 @@ public abstract class ParentBaseTest<T extends ImmutableParent> extends ParentRe
     }
 
     public ParentBaseTest(Class<T> clazz) {
-        super(clazz);
+        factory = new ParentReflectionFactory<>(clazz);
+    }
+
+    @Override
+    public T create(String name, Set<MutablePerson> children) {
+        return factory.create(name, children);
+    }
+
+    @Override
+    public T create(String name) {
+        return factory.create(name);
+    }
+
+    @Override
+    public T create() {
+        return factory.create();
     }
 }
