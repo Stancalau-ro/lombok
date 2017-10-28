@@ -4,7 +4,7 @@ import com.github.peterwippermann.junit4.parameterizedsuite.ParameterizedSuite;
 import org.junit.runner.RunWith;
 import ro.stancalau.lombok.tests.FieldVisibilityTests;
 import ro.stancalau.lombok.tests.base.TestParam;
-import ro.stancalau.lombok.tests.person.PersonBaseEqualsAndHashTests;
+import ro.stancalau.lombok.tests.person.BasicPersonEqualsAndHashTests;
 import ro.stancalau.lombok.tests.person.PersonConstructorAndGetterTests;
 
 import static org.junit.runners.Parameterized.Parameter;
@@ -14,7 +14,7 @@ import static org.junit.runners.Suite.SuiteClasses;
 @RunWith(ParameterizedSuite.class)
 @SuiteClasses({
         FieldVisibilityTests.class,
-        PersonBaseEqualsAndHashTests.class,
+        BasicPersonEqualsAndHashTests.class,
         PersonConstructorAndGetterTests.class
 })
 public class ImutablePersonImplSuite {

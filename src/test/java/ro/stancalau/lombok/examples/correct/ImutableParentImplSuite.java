@@ -6,7 +6,7 @@ import ro.stancalau.lombok.tests.FieldVisibilityTests;
 import ro.stancalau.lombok.tests.base.TestParam;
 import ro.stancalau.lombok.tests.parent.ParentChildrenGetterTests;
 import ro.stancalau.lombok.tests.parent.ParentConstructorTests;
-import ro.stancalau.lombok.tests.person.PersonBaseEqualsAndHashTests;
+import ro.stancalau.lombok.tests.person.BasicPersonEqualsAndHashTests;
 import ro.stancalau.lombok.tests.person.PersonConstructorAndGetterTests;
 
 import static org.junit.runners.Parameterized.Parameter;
@@ -18,7 +18,7 @@ import static org.junit.runners.Suite.SuiteClasses;
         FieldVisibilityTests.class,
         ParentChildrenGetterTests.class,
         ParentConstructorTests.class,
-        PersonBaseEqualsAndHashTests.class,
+        BasicPersonEqualsAndHashTests.class,
         PersonConstructorAndGetterTests.class
 })
 public class ImutableParentImplSuite {

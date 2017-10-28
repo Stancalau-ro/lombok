@@ -11,14 +11,14 @@ import ro.stancalau.lombok.tests.base.TestParam;
 import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-public class PersonBaseEqualsAndHashTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
+public class BasicPersonEqualsAndHashTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
     private ImmutablePerson person;
     private ImmutablePerson samePerson;
     private ImmutablePerson sameClone;
     private ImmutablePerson stranger;
 
-    public PersonBaseEqualsAndHashTests(TestParam param) {
+    public BasicPersonEqualsAndHashTests(TestParam param) {
         super((Class<T>) param.getClassUnderTest());
     }
 
