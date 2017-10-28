@@ -1,6 +1,8 @@
 package ro.stancalau.lombok.tests.parent;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import ro.stancalau.lombok.api.ImmutableParent;
 import ro.stancalau.lombok.api.MutablePerson;
 import ro.stancalau.lombok.tests.base.ParentBaseTest;
@@ -10,7 +12,8 @@ import java.util.Set;
 import static org.junit.Assert.assertEquals;
 import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 
-public abstract class ParentConstructorTests<T extends ImmutableParent> extends ParentBaseTest<T> {
+@RunWith(Parameterized.class)
+public class ParentConstructorTests<T extends ImmutableParent> extends ParentBaseTest<T> {
 
     public ParentConstructorTests(Class<T> clazz) {
         super(clazz);

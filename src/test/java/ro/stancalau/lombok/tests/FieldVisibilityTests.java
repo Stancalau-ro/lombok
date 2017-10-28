@@ -1,6 +1,8 @@
 package ro.stancalau.lombok.tests;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import ro.stancalau.lombok.api.ImmutablePerson;
 import ro.stancalau.lombok.tests.base.PersonBaseTest;
 
@@ -9,7 +11,8 @@ import java.lang.reflect.Modifier;
 
 import static org.junit.Assert.assertTrue;
 
-public abstract class FieldVisibilityTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
+@RunWith(Parameterized.class)
+public class FieldVisibilityTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
     public FieldVisibilityTests(Class<T> clazz) {
         super(clazz);

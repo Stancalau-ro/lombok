@@ -2,12 +2,15 @@ package ro.stancalau.lombok.tests.person;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import ro.stancalau.lombok.api.ImmutablePerson;
 import ro.stancalau.lombok.tests.base.PersonBaseTest;
 
 import static org.junit.Assert.*;
 
-public abstract class PersonBaseEqualsAndHashTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
+@RunWith(Parameterized.class)
+public class PersonBaseEqualsAndHashTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
     private T person;
     private T samePerson;

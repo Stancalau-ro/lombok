@@ -7,16 +7,16 @@ import ro.stancalau.lombok.tests.base.ParentBaseTest;
 import static org.junit.Assert.*;
 import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 
-public abstract class ParentChildrenAddingTests<T extends MutableParent> extends ParentBaseTest<T> {
+public abstract class ParentChildrenAddingTests extends ParentBaseTest<MutableParent> {
 
-    public ParentChildrenAddingTests(Class<T> clazz) {
-        super(clazz);
+    public ParentChildrenAddingTests(Class<? extends MutableParent> clazz) {
+        super((Class<MutableParent>) clazz);
     }
 
     @Test
     public void givenParentWhenAddingChildThenChildCountIncreases() throws Exception {
         //given
-        T mutableParent = create(NAME, globalChildren);
+        MutableParent mutableParent = create(NAME, globalChildren);
 
         //when
         mutableParent.addChild(ILLEGITIMATE_CHILD);
@@ -28,7 +28,7 @@ public abstract class ParentChildrenAddingTests<T extends MutableParent> extends
     @Test
     public void givenParentWhenAddingChildThenNewChildIsContainedInChildren() throws Exception {
         //given
-        T mutableParent = create(NAME, globalChildren);
+        MutableParent mutableParent = create(NAME, globalChildren);
 
         //when
         mutableParent.addChild(ILLEGITIMATE_CHILD);
@@ -40,7 +40,7 @@ public abstract class ParentChildrenAddingTests<T extends MutableParent> extends
     @Test
     public void givenParentWhenAddingChildThenGlobalSetSizeDoesNotChange() throws Exception {
         //given
-        T mutableParent = create(NAME, globalChildren);
+        MutableParent mutableParent = create(NAME, globalChildren);
 
         //when
         mutableParent.addChild(ILLEGITIMATE_CHILD);
@@ -52,7 +52,7 @@ public abstract class ParentChildrenAddingTests<T extends MutableParent> extends
     @Test
     public void givenParentWhenAddingChildThenNewChildNotContainedInGlobalSet() throws Exception {
         //given
-        T mutableParent = create(NAME, globalChildren);
+        MutableParent mutableParent = create(NAME, globalChildren);
 
         //when
         mutableParent.addChild(ILLEGITIMATE_CHILD);
@@ -64,7 +64,7 @@ public abstract class ParentChildrenAddingTests<T extends MutableParent> extends
     @Test
     public void givenParentConstructedByNameWhenAddChildThenChildCountIncreases() throws Exception {
         //given
-        T mutableParent = create(NAME);
+        MutableParent mutableParent = create(NAME);
 
         //when
         mutableParent.addChild(ILLEGITIMATE_CHILD);
@@ -76,7 +76,7 @@ public abstract class ParentChildrenAddingTests<T extends MutableParent> extends
     @Test
     public void givenParentConstructedWithNoArgsWhenAddChildThenChildCountIncreases() throws Exception {
         //given
-        T mutableParent = create();
+        MutableParent mutableParent = create();
 
         //when
         mutableParent.addChild(ILLEGITIMATE_CHILD);

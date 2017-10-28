@@ -1,6 +1,8 @@
 package ro.stancalau.lombok.tests.person;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import ro.stancalau.lombok.api.ImmutablePerson;
 import ro.stancalau.lombok.api.MutablePerson;
 import ro.stancalau.lombok.tests.base.PersonBaseTest;
@@ -11,7 +13,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 
-public abstract class PersonConstructorAndGetterTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
+@RunWith(Parameterized.class)
+public class PersonConstructorAndGetterTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
     public PersonConstructorAndGetterTests(Class<T> clazz) {
         super(clazz);
