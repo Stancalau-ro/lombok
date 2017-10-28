@@ -20,7 +20,7 @@ public class PersonSetterTests<T extends MutablePerson> extends PersonBaseTest<T
     @Test
     public void givenPersonWhenSetNameThenGetUpdatedName() throws Exception {
         //given
-        T person = create(NAME);
+        MutablePerson person = create(NAME);
 
         //when
         person.setName(NEW_NAME);

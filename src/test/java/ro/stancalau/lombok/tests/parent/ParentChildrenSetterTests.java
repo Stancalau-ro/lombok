@@ -26,7 +26,7 @@ public class ParentChildrenSetterTests<T extends MutableParent> extends ParentBa
     @Test
     public void givenParentWhenSetChildrenThenGetUpdatedChildrenSet() throws Exception {
         //given
-        T mutableParent = create(NAME, globalChildren);
+        MutableParent mutableParent = create(NAME, globalChildren);
 
         //when
         Set<MutablePerson> newChildren = Collections.singleton(create(NEW_NAME));
@@ -39,7 +39,7 @@ public class ParentChildrenSetterTests<T extends MutableParent> extends ParentBa
     @Test
     public void givenParentWithSetChildrenWhenOriginalSetChangesThenParentChildrenDoNotChange() throws Exception {
         //given
-        T mutableParent = create(NAME);
+        MutableParent mutableParent = create(NAME);
         Set<MutablePerson> newChildren = new HashSet<>();
         mutableParent.setChildren(newChildren);
         int childCount = newChildren.size();
@@ -55,7 +55,7 @@ public class ParentChildrenSetterTests<T extends MutableParent> extends ParentBa
     @Test
     public void givenParentWithSetChildrenWhenParentChildAddedThenOriginalSetNotChanged() throws Exception {
         //given
-        T mutableParent = create(NAME);
+        MutableParent mutableParent = create(NAME);
         Set<MutablePerson> newChildren = new HashSet<>();
         mutableParent.setChildren(newChildren);
         int childCount = newChildren.size();

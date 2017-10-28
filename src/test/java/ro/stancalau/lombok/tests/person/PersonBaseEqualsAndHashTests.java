@@ -12,10 +12,10 @@ import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 public class PersonBaseEqualsAndHashTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
-    private T person;
-    private T samePerson;
-    private T sameClone;
-    private T stranger;
+    private ImmutablePerson person;
+    private ImmutablePerson samePerson;
+    private ImmutablePerson sameClone;
+    private ImmutablePerson stranger;
 
     public PersonBaseEqualsAndHashTests(Class<T> clazz) {
         super(clazz);
