@@ -1,24 +1,25 @@
-package ro.stancalau.lombok.base;
+package ro.stancalau.lombok.base.person;
 
 import org.junit.Test;
 import ro.stancalau.lombok.api.ImmutablePerson;
 import ro.stancalau.lombok.api.MutablePerson;
-import ro.stancalau.lombok.factory.PersonFactory;
+import ro.stancalau.lombok.factory.PersonCreator;
 
 import java.lang.reflect.Modifier;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public abstract class PersonTest<T extends ImmutablePerson> implements PersonFactory<T> {
+public abstract class PersonConstructorsAndGettersTests<T extends ImmutablePerson> extends PersonCreator<T> {
 
-    protected static final String NAME = "Joe";
-    protected static final String NEW_NAME = "Jerome";
+    public PersonConstructorsAndGettersTests(Class<T> clazz) {
+        super(clazz);
+    }
 
     @Test
     public void givenPersonConstructedWithNoArgsWhenGetNameThenItIsDefault() throws Exception {
         //given
-        T person = createPerson();
+        T person = create();
 
         //when
         String name = person.getName();
@@ -33,13 +34,13 @@ public abstract class PersonTest<T extends ImmutablePerson> implements PersonFac
         String name = null;
 
         //when
-        createPerson(name);
+        create(name);
     }
 
     @Test
-    public void givenPersonWhenWhenCheckingModifiersOfNameFieldThenFieldIsDeclaredPrivate() throws Exception {
+    public void givenPersonWhenCheckingModifiersOfNameFieldThenFieldIsDeclaredPrivate() throws Exception {
         //given
-        T person = createPerson(NAME);
+        T person = create(NAME);
 
         //when
         int nameModifiers = person.getClass().getDeclaredField("name").getModifiers();

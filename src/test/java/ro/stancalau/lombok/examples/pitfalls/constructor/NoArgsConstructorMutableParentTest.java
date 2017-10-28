@@ -2,25 +2,12 @@ package ro.stancalau.lombok.examples.pitfalls.constructor;
 
 
 import ro.stancalau.lombok.api.MutableParent;
-import ro.stancalau.lombok.api.MutablePerson;
-import ro.stancalau.lombok.base.MutableParentTest;
+import ro.stancalau.lombok.base.parent.ParentConstructorTests;
 
-import java.util.Set;
+public class NoArgsConstructorMutableParentTest extends ParentConstructorTests<NoArgsConstructorMutableParent> {
 
-public class NoArgsConstructorMutableParentTest extends MutableParentTest {
-
-    @Override
-    public MutableParent createPerson(String name, Set<MutablePerson> children) {
-        return new NoArgsConstructorMutableParent(name, children);
+    public NoArgsConstructorMutableParentTest(Class<MutableParent> clazz) {
+        super(NoArgsConstructorMutableParent.class);
     }
 
-    @Override
-    public MutableParent createPerson(String name) {
-        return new NoArgsConstructorMutableParent(name);
-    }
-
-    @Override
-    public MutableParent createPerson() {
-        return new NoArgsConstructorMutableParent();
-    }
 }

@@ -1,16 +1,18 @@
 package ro.stancalau.lombok.examples.acceptable;
 
-import ro.stancalau.lombok.base.MutablePersonTest;
+import ro.stancalau.lombok.base.person.PersonSetterTests;
 
-public class MutablePersonImplTest extends MutablePersonTest<MutablePersonImpl> {
+public class MutablePersonImplTest extends PersonSetterTests<MutablePersonImpl> {
 
-    @Override
-    public MutablePersonImpl createPerson(String name) {
+    public MutablePersonImplTest(Class<MutablePersonImpl> clazz) {
+        super(clazz);
+    }
+
+    public MutablePersonImpl create(String name) {
         return new MutablePersonImpl(name);
     }
 
-    @Override
-    public MutablePersonImpl createPerson() {
+    public MutablePersonImpl create() {
         return new MutablePersonImpl();
     }
 }

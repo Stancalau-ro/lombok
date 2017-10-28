@@ -1,25 +1,29 @@
-package ro.stancalau.lombok.base;
+package ro.stancalau.lombok.base.person;
 
 import org.junit.Before;
 import org.junit.Test;
 import ro.stancalau.lombok.api.ImmutablePerson;
-import ro.stancalau.lombok.factory.PersonFactory;
+import ro.stancalau.lombok.factory.PersonCreator;
 
 import static org.junit.Assert.*;
 
-public abstract class PersonBaseEqualsAndHashTest<T extends ImmutablePerson> implements PersonFactory<T> {
+public abstract class PersonBaseEqualsAndHashTests<T extends ImmutablePerson> extends PersonCreator<T> {
 
     private T person;
     private T samePerson;
     private T sameClone;
     private T stranger;
 
+    public PersonBaseEqualsAndHashTests(Class<T> clazz) {
+        super(clazz);
+    }
+
     @Before
     public void setUp() throws Exception {
-        person = createPerson();
-        samePerson = createPerson();
-        sameClone = createPerson();
-        stranger = createPerson("Stranger");
+        person = create();
+        samePerson = create();
+        sameClone = create();
+        stranger = create("Stranger");
     }
 
     @Test

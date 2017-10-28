@@ -4,7 +4,7 @@ import ro.stancalau.lombok.api.ImmutablePerson;
 
 public interface PersonFactory<T extends ImmutablePerson> {
 
-    T createPerson(String name);
+    T create(String name);
 
-    T createPerson();
+    T create();
 }

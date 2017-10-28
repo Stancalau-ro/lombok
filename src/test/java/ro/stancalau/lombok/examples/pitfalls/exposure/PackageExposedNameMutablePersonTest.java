@@ -1,16 +1,19 @@
 package ro.stancalau.lombok.examples.pitfalls.exposure;
 
-import ro.stancalau.lombok.base.MutablePersonTest;
+import ro.stancalau.lombok.base.person.PersonSetterTests;
 
-public class PackageExposedNameMutablePersonTest extends MutablePersonTest<PackageExposedNameMutablePerson> {
+public class PackageExposedNameMutablePersonTest extends PersonSetterTests<PackageExposedNameMutablePerson> {
 
-    @Override
-    public PackageExposedNameMutablePerson createPerson(String name) {
+
+    public PackageExposedNameMutablePersonTest(Class<PackageExposedNameMutablePerson> clazz) {
+        super(clazz);
+    }
+
+    public PackageExposedNameMutablePerson create(String name) {
         return new PackageExposedNameMutablePerson(name);
     }
 
-    @Override
-    public PackageExposedNameMutablePerson createPerson() {
+    public PackageExposedNameMutablePerson create() {
         return new PackageExposedNameMutablePerson();
     }
 }
