@@ -1,4 +1,4 @@
-package ro.stancalau.lombok.examples.acceptable;
+package ro.stancalau.lombok.examples.correct;
 
 import lombok.Getter;
 import lombok.NonNull;

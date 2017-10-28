@@ -29,7 +29,7 @@ public class SideEffectFromSetterMutableParent implements MutableParent {
 
     public SideEffectFromSetterMutableParent(String name, Set<MutablePerson> children) {
         setName(name);
-        setChildren(children);
+        this.children = new HashSet<>(children);
     }
 
     @Override

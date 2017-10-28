@@ -1,4 +1,4 @@
-package ro.stancalau.lombok.examples.pitfalls.getters;
+package ro.stancalau.lombok.examples.pitfalls.constructor;
 
 import lombok.Getter;
 import lombok.NonNull;

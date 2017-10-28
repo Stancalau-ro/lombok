@@ -26,7 +26,11 @@ public class PersonReflectionFactory<T extends ImmutablePerson> implements Perso
     @Override
     @SneakyThrows
     public T create() {
-        return create(ImmutablePerson.DEFAULT_NAME);
+        try {
+            return (T) Class.forName(clazz.getName()).getConstructor().newInstance();
+        } catch (NoSuchMethodException e) {
+            return create(ImmutablePerson.DEFAULT_NAME);
+        }
     }
 
 }

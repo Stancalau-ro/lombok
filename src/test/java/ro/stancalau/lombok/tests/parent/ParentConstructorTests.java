@@ -22,7 +22,7 @@ public class ParentConstructorTests<T extends ImmutableParent> extends ParentBas
     @Test
     public void givenValuesWhenConstructingParentThenGettersReturnOriginalValues() throws Exception {
         //when
-        T mutableParent = create(NAME, globalChildren);
+        ImmutableParent mutableParent = create(NAME, globalChildren);
 
         //then
         assertEquals(NAME, mutableParent.getName());
@@ -33,7 +33,7 @@ public class ParentConstructorTests<T extends ImmutableParent> extends ParentBas
     @Test
     public void givenParentWhenMutatingGlobalSetThenParentChildrenDoNotChange() throws Exception {
         //given
-        T mutableParent = create(NAME, globalChildren);
+        ImmutableParent mutableParent = create(NAME, globalChildren);
 
         //when
         globalChildren.add(ILLEGITIMATE_CHILD);
@@ -63,7 +63,7 @@ public class ParentConstructorTests<T extends ImmutableParent> extends ParentBas
     @Test
     public void givenOnlyNameWhenConstructingThenChildrenSetSizeIsZero() throws Exception {
         //when
-        T mutableParent = create(NAME);
+        ImmutableParent mutableParent = create(NAME);
 
         //then
         assertEquals(0, mutableParent.getChildren().size());
@@ -72,7 +72,7 @@ public class ParentConstructorTests<T extends ImmutableParent> extends ParentBas
     @Test
     public void givenNoParamsWhenConstructThenChildrenSetSizeIsZero() throws Exception {
         //when
-        T mutableParent = create();
+        ImmutableParent mutableParent = create();
 
         //then
         assertEquals(0, mutableParent.getChildren().size());

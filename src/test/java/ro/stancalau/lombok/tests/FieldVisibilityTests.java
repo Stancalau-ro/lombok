@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import static org.junit.Assert.assertTrue;
+import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 
 @RunWith(Parameterized.class)
 public class FieldVisibilityTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
@@ -21,7 +22,7 @@ public class FieldVisibilityTests<T extends ImmutablePerson> extends PersonBaseT
     @Test
     public void givenImmutableTypeWhenGetAllFieldsThenAllFieldsAreFinalAndPrivate() throws Exception {
         //given
-        T person = create();
+        ImmutablePerson person = create();
 
         //when
         Field[] fields = person.getClass().getFields();
@@ -36,5 +37,17 @@ public class FieldVisibilityTests<T extends ImmutablePerson> extends PersonBaseT
             assertTrue(field.getName() + " is not private", Modifier.isPrivate(modifiers));
             assertTrue(field.getName() + " is not final", Modifier.isFinal(modifiers));
         }
+    }
+
+    @Test
+    public void givenPersonWhenCheckingModifiersOfNameFieldThenFieldIsDeclaredPrivate() throws Exception {
+        //given
+        ImmutablePerson person = create(NAME);
+
+        //when
+        int nameModifiers = person.getClass().getDeclaredField("name").getModifiers();
+
+        //then
+        assertTrue(Modifier.isPrivate(nameModifiers));
     }
 }

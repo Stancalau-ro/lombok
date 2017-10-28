@@ -1,6 +1,8 @@
 package ro.stancalau.lombok.tests.person;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import ro.stancalau.lombok.api.MutablePerson;
 import ro.stancalau.lombok.tests.base.PersonBaseTest;
 
@@ -8,7 +10,8 @@ import static org.junit.Assert.assertEquals;
 import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 import static ro.stancalau.lombok.tests.base.TestNames.NEW_NAME;
 
-public abstract class PersonSetterTests<T extends MutablePerson> extends PersonBaseTest<T> {
+@RunWith(Parameterized.class)
+public class PersonSetterTests<T extends MutablePerson> extends PersonBaseTest<T> {
 
     public PersonSetterTests(Class<T> clazz) {
         super(clazz);

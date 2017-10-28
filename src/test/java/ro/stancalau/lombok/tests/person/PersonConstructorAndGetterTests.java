@@ -7,11 +7,7 @@ import ro.stancalau.lombok.api.ImmutablePerson;
 import ro.stancalau.lombok.api.MutablePerson;
 import ro.stancalau.lombok.tests.base.PersonBaseTest;
 
-import java.lang.reflect.Modifier;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 
 @RunWith(Parameterized.class)
 public class PersonConstructorAndGetterTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
@@ -23,7 +19,7 @@ public class PersonConstructorAndGetterTests<T extends ImmutablePerson> extends 
     @Test
     public void givenPersonConstructedWithNoArgsWhenGetNameThenItIsDefault() throws Exception {
         //given
-        T person = create();
+        ImmutablePerson person = create();
 
         //when
         String name = person.getName();
@@ -39,17 +35,5 @@ public class PersonConstructorAndGetterTests<T extends ImmutablePerson> extends 
 
         //when
         create(name);
-    }
-
-    @Test
-    public void givenPersonWhenCheckingModifiersOfNameFieldThenFieldIsDeclaredPrivate() throws Exception {
-        //given
-        T person = create(NAME);
-
-        //when
-        int nameModifiers = person.getClass().getDeclaredField("name").getModifiers();
-
-        //then
-        assertTrue(Modifier.isPrivate(nameModifiers));
     }
 }

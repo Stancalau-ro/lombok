@@ -1,11 +1,10 @@
-package ro.stancalau.lombok.examples.acceptable.immutable;
+package ro.stancalau.lombok.examples.pitfalls.exposure;
 
 import com.github.peterwippermann.junit4.parameterizedsuite.ParameterizedSuite;
 import org.junit.runner.RunWith;
-import ro.stancalau.lombok.examples.acceptable.ImmutablePersonImpl;
 import ro.stancalau.lombok.tests.FieldVisibilityTests;
-import ro.stancalau.lombok.tests.person.PersonBaseEqualsAndHashTests;
 import ro.stancalau.lombok.tests.person.PersonConstructorAndGetterTests;
+import ro.stancalau.lombok.tests.person.PersonSetterTests;
 
 import static org.junit.runners.Parameterized.Parameter;
 import static org.junit.runners.Parameterized.Parameters;
@@ -14,17 +13,18 @@ import static org.junit.runners.Suite.SuiteClasses;
 @RunWith(ParameterizedSuite.class)
 @SuiteClasses({
         FieldVisibilityTests.class,
-        PersonBaseEqualsAndHashTests.class,
-        PersonConstructorAndGetterTests.class
+        PersonConstructorAndGetterTests.class,
+        PersonSetterTests.class
 })
-public class ImutablePersonImplSuite {
+public class PublicallyExposedNameMutablePersonSuite {
+
+    private static final Class CLASS_UNDER_TEST = PublicallyExposedNameMutablePerson.class;
 
     @Parameters(name = "Class under test is {0}")
     public static Object[] params() {
-        return new Object[][]{{ImmutablePersonImpl.class}};
+        return new Object[][]{{CLASS_UNDER_TEST}};
     }
 
-    @Parameter(0)
+    @Parameter
     public Class clazz;
-
 }

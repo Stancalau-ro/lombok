@@ -19,7 +19,7 @@ public class ParentChildrenGetterTests<T extends ImmutableParent> extends Parent
     @Test
     public void givenParentWhenMutatingChildListAsSideEffectThenParentStateDoesNotChange() throws Exception {
         //given
-        T mutableParent = create(NAME, globalChildren);
+        ImmutableParent mutableParent = create(NAME, globalChildren);
 
         //when
         mutableParent.getChildren().add(ILLEGITIMATE_CHILD);
@@ -32,7 +32,7 @@ public class ParentChildrenGetterTests<T extends ImmutableParent> extends Parent
     @Test
     public void givenParentWhenMutatingChildListAsSideEffectThenGlobalSetDoesNotChange() throws Exception {
         //given
-        T mutableParent = create(NAME, globalChildren);
+        ImmutableParent mutableParent = create(NAME, globalChildren);
 
         //when
         mutableParent.getChildren().add(ILLEGITIMATE_CHILD);
