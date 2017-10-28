@@ -27,12 +27,18 @@ public class ExtendedEqualsSymmetryTest<P extends ImmutablePerson, C extends Imm
     }
 
     @Test
-    public void givenSameStateChildAndParentWhenEqualsThenFalseIsSymmetrical() throws Exception {
-        //given
+    public void givenSameStateChildAndParentWhenEqualsThenFalseIsSymmetricalFromParentToChild() throws Exception {
         ImmutablePerson parent = create();
         ImmutableParent child = childFactory.create();
 
         assertFalse(parent.equals(child));
+    }
+
+    @Test
+    public void givenSameStateChildAndParentWhenEqualsThenFalseIsSymmetricalFromChildToParent() throws Exception {
+        ImmutablePerson parent = create();
+        ImmutableParent child = childFactory.create();
+
         assertFalse(child.equals(parent));
     }
 }
