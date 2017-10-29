@@ -9,17 +9,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Value
-public class ImmutableParentImpl implements ImmutableParent {
+public class CorrectImmutableParent implements ImmutableParent {
 
     private String name;
     private Set<MutablePerson> children;
 
-    public ImmutableParentImpl(String name) {
+    public CorrectImmutableParent(String name) {
         this(name, Collections.emptySet());
     }
 
     //Needs to be manually implemented instead of relying on @AllArgsConstructor or @RequiredArgsConstructor
-    public ImmutableParentImpl(String name, Set<MutablePerson> children) {
+    public CorrectImmutableParent(String name, Set<MutablePerson> children) {
         if (name == null) {
             throw new NullPointerException("Name cannot be null");
         }

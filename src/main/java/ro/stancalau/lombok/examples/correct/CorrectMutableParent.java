@@ -12,23 +12,23 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class MutableParentImpl implements MutableParent {
+public class CorrectMutableParent implements MutableParent {
 
     @NonNull
     private String name;
     @NonNull
     private Set<MutablePerson> children;
 
-    public MutableParentImpl() {
+    public CorrectMutableParent() {
         this(DEFAULT_NAME);
     }
 
-    public MutableParentImpl(String name) {
+    public CorrectMutableParent(String name) {
         this(name, Collections.emptySet());
     }
 
     //Using @AllArgsConstructor would not call the setter, but assign reference directly even for mutable types
-    public MutableParentImpl(String name, Set<MutablePerson> children) {
+    public CorrectMutableParent(String name, Set<MutablePerson> children) {
         setName(name);
         setChildren(children);
     }

@@ -30,10 +30,10 @@ import static org.junit.runners.Suite.SuiteClasses;
         ExtendedEqualsSymmetryTest.class,
         MutableParentEqualsAndHashTests.class
 })
-public class EqualableParentSuite {
+public class CorrectEqualableParentSuite {
 
-    private static final Class CLASS_UNDER_TEST = EqualableParent.class;
-    private static final Class CHILD_CLASS = ExtendedEqualableParent.class;
+    private static final Class CLASS_UNDER_TEST = CorrectEqualableParent.class;
+    private static final Class CHILD_CLASS = CorrectlyExtendedEqualableParent.class;
 
     @Parameters(name = "Class under test is {0}")
     public static Object[] params() {

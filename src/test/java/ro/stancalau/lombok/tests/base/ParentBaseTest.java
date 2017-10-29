@@ -3,7 +3,7 @@ package ro.stancalau.lombok.tests.base;
 import org.junit.Before;
 import ro.stancalau.lombok.api.ImmutableParent;
 import ro.stancalau.lombok.api.MutablePerson;
-import ro.stancalau.lombok.examples.correct.MutableParentImpl;
+import ro.stancalau.lombok.examples.correct.CorrectMutableParent;
 import ro.stancalau.lombok.factory.ParentFactory;
 import ro.stancalau.lombok.factory.ParentReflectionFactory;
 
@@ -15,7 +15,7 @@ import static ro.stancalau.lombok.tests.base.TestNames.GIRL_NAME;
 
 public abstract class ParentBaseTest<T extends ImmutableParent> extends ParameterizedTest implements ParentTest<T> {
 
-    protected static final MutablePerson ILLEGITIMATE_CHILD = new MutableParentImpl("Bob");
+    protected static final MutablePerson ILLEGITIMATE_CHILD = new CorrectMutableParent("Bob");
     protected Set<MutablePerson> globalChildren;
 
     private final ParentFactory<T> factory;
@@ -23,8 +23,8 @@ public abstract class ParentBaseTest<T extends ImmutableParent> extends Paramete
     @Before
     public void setUpChildren() throws Exception {
         globalChildren = new HashSet<>();
-        globalChildren.add(new MutableParentImpl(BOY_NAME));
-        globalChildren.add(new MutableParentImpl(GIRL_NAME));
+        globalChildren.add(new CorrectMutableParent(BOY_NAME));
+        globalChildren.add(new CorrectMutableParent(GIRL_NAME));
     }
 
     public ParentBaseTest(Class<T> clazz) {

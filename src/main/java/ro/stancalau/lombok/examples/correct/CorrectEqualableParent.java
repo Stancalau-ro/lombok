@@ -14,22 +14,22 @@ import java.util.Set;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class EqualableParent implements MutableParent {
+public class CorrectEqualableParent implements MutableParent {
 
     @NonNull
     private String name;
     @NonNull
     private Set<MutablePerson> children;
 
-    public EqualableParent() {
+    public CorrectEqualableParent() {
         this(DEFAULT_NAME);
     }
 
-    public EqualableParent(String name) {
+    public CorrectEqualableParent(String name) {
         this(name, Collections.emptySet());
     }
 
-    public EqualableParent(String name, Set<MutablePerson> children) {
+    public CorrectEqualableParent(String name, Set<MutablePerson> children) {
         setName(name);
         setChildren(children);
     }

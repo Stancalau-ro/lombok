@@ -2,7 +2,7 @@ package ro.stancalau.lombok.examples.pitfalls.equals;
 
 import com.github.peterwippermann.junit4.parameterizedsuite.ParameterizedSuite;
 import org.junit.runner.RunWith;
-import ro.stancalau.lombok.examples.correct.EqualableParent;
+import ro.stancalau.lombok.examples.correct.CorrectEqualableParent;
 import ro.stancalau.lombok.tests.FieldVisibilityTests;
 import ro.stancalau.lombok.tests.base.EqualableTestParam;
 import ro.stancalau.lombok.tests.base.TestParam;
@@ -33,7 +33,7 @@ import static org.junit.runners.Suite.SuiteClasses;
 })
 public class ExtendedEqualableWithIntellijGenerationParentSuite {
 
-    private static final Class CLASS_UNDER_TEST = EqualableParent.class;
+    private static final Class CLASS_UNDER_TEST = CorrectEqualableParent.class;
     private static final Class CHILD_CLASS = ExtendedEqualableWithIntellijGenerationParent.class;
 
     @Parameters(name = "Class under test is {0}")

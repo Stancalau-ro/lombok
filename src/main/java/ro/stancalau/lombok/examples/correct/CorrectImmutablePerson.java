@@ -1,20 +1,18 @@
 package ro.stancalau.lombok.examples.correct;
 
-import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import ro.stancalau.lombok.api.MutablePerson;
+import lombok.Value;
+import ro.stancalau.lombok.api.ImmutablePerson;
 
-@Getter
-@Setter
+@Value
 @RequiredArgsConstructor
-public class MutablePersonImpl implements MutablePerson {
+public class CorrectImmutablePerson implements ImmutablePerson {
 
     @NonNull
     private String name;
 
-    public MutablePersonImpl() {
+    public CorrectImmutablePerson() {
         this(DEFAULT_NAME);
     }
 }

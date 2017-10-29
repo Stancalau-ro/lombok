@@ -2,12 +2,12 @@ package ro.stancalau.lombok.examples.pitfalls.equals;
 
 import lombok.Getter;
 import lombok.Setter;
-import ro.stancalau.lombok.examples.correct.EqualableParent;
+import ro.stancalau.lombok.examples.correct.CorrectEqualableParent;
 
 @Getter
 @Setter
 //Missing @EqualsAndHashCode, but with manual implementation with missing cal to super.canEqual(this)
-public class ExtendedEqualableWithIntellijGenerationParent extends EqualableParent {
+public class ExtendedEqualableWithIntellijGenerationParent extends CorrectEqualableParent {
 
     private int a = 0;
 
