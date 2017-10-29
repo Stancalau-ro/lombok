@@ -6,6 +6,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 public class ExtendedEqualableParent extends EqualableParent {
 }
