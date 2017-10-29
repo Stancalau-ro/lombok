@@ -1,4 +1,4 @@
-# Lombok practices by stancalau.ro
+# Lombok pitfalls and correct approaches
 Examples for Lombok good practices and common pitfalls.
 
 ##Prerequisites
