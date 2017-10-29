@@ -30,7 +30,7 @@ Examples for Lombok good practices and common pitfalls.
 - Actual parameter reference set using `@Value`. Side-effects possible when field type is mutable.
 
 ## Notes
-- All tests in `ro.stancalau.examples.pitfalls` package are meant to fail in order to exemplify common pitfalls.
+ :collision: All tests in `ro.stancalau.examples.pitfalls` package are meant to fail in order to exemplify common pitfalls.
 
 ## References
 
