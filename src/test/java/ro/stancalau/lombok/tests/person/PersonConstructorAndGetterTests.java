@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class PersonConstructorAndGetterTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
+    @SuppressWarnings("unchecked")
     public PersonConstructorAndGetterTests(TestParam param) {
         super((Class<T>) param.getClassUnderTest());
     }

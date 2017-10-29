@@ -13,6 +13,7 @@ import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 @RunWith(Parameterized.class)
 public class ParentChildrenGetterTests<T extends ImmutableParent> extends ParentBaseTest<T> {
 
+    @SuppressWarnings("unchecked")
     public ParentChildrenGetterTests(TestParam param) {
         super((Class<T>) param.getClassUnderTest());
     }

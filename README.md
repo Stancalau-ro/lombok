@@ -1,5 +1,5 @@
 # Lombok practices by stancalau.ro
-Exemples for Lombok good practices and common pitfals.
+Examples for Lombok good practices and common pitfalls.
 
 ##Prerequisites
 1. JDK 8

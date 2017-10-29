@@ -18,7 +18,7 @@ public abstract class ParentBaseTest<T extends ImmutableParent> extends Paramete
     protected static final MutablePerson ILLEGITIMATE_CHILD = new MutableParentImpl("Bob");
     protected Set<MutablePerson> globalChildren;
 
-    private ParentFactory<T> factory;
+    private final ParentFactory<T> factory;
 
     @Before
     public void setUpChildren() throws Exception {

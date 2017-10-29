@@ -14,6 +14,7 @@ import static ro.stancalau.lombok.tests.base.TestNames.NEW_NAME;
 @RunWith(Parameterized.class)
 public class MutableParentEqualsAndHashTests<T extends MutableParent> extends PersonBaseTest<T> {
 
+    @SuppressWarnings("unchecked")
     public MutableParentEqualsAndHashTests(TestParam param) {
         super((Class<T>) param.getClassUnderTest());
     }

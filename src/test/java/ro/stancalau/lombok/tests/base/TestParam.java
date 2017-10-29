@@ -12,8 +12,6 @@ public class TestParam {
         return clazz;
     }
 
-    ;
-
     @Override
     public String toString() {
         return getClassUnderTest().getName();

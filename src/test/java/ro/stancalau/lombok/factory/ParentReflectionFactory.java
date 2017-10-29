@@ -13,6 +13,7 @@ public class ParentReflectionFactory<T extends ImmutableParent> extends PersonRe
         super(clazz);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     @SneakyThrows
     public T create(String name, Set<MutablePerson> children) {

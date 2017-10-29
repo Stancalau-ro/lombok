@@ -16,6 +16,7 @@ import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 @RunWith(Parameterized.class)
 public class FieldVisibilityTests<T extends ImmutablePerson> extends PersonBaseTest<T> {
 
+    @SuppressWarnings("unchecked")
     public FieldVisibilityTests(TestParam param) {
         super((Class<T>) param.getClassUnderTest());
     }

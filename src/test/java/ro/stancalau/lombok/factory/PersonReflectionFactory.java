@@ -13,6 +13,7 @@ public class PersonReflectionFactory<T extends ImmutablePerson> implements Perso
         this.clazz = clazz;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     @SneakyThrows
     public T create(String name) {
@@ -23,6 +24,7 @@ public class PersonReflectionFactory<T extends ImmutablePerson> implements Perso
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     @SneakyThrows
     public T create() {

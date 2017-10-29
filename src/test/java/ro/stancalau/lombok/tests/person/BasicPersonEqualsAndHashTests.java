@@ -18,6 +18,7 @@ public class BasicPersonEqualsAndHashTests<T extends ImmutablePerson> extends Pe
     private ImmutablePerson sameClone;
     private ImmutablePerson stranger;
 
+    @SuppressWarnings("unchecked")
     public BasicPersonEqualsAndHashTests(TestParam param) {
         super((Class<T>) param.getClassUnderTest());
     }

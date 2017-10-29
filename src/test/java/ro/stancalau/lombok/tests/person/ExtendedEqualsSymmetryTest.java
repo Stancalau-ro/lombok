@@ -17,8 +17,9 @@ import static org.junit.Assert.assertTrue;
 public class ExtendedEqualsSymmetryTest<P extends ImmutablePerson, C extends ImmutableParent> extends PersonBaseTest<P> {
 
     private final Class<C> childClass;
-    private PersonFactory<C> childFactory;
+    private final PersonFactory<C> childFactory;
 
+    @SuppressWarnings("unchecked")
     public ExtendedEqualsSymmetryTest(EqualableTestParam param) {
         super((Class<P>) param.getClassUnderTest());
         childClass = (Class<C>) param.getChildClass();

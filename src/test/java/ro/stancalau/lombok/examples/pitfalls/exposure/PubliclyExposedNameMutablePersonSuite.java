@@ -17,9 +17,9 @@ import static org.junit.runners.Suite.SuiteClasses;
         PersonConstructorAndGetterTests.class,
         PersonSetterTests.class
 })
-public class PublicallyExposedNameMutablePersonSuite {
+public class PubliclyExposedNameMutablePersonSuite {
 
-    private static final Class CLASS_UNDER_TEST = PublicallyExposedNameMutablePerson.class;
+    private static final Class CLASS_UNDER_TEST = PubliclyExposedNameMutablePerson.class;
 
     @Parameters(name = "Class under test is {0}")
     public static Object[] params() {

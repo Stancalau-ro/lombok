@@ -6,7 +6,7 @@ import ro.stancalau.lombok.factory.PersonReflectionFactory;
 
 public abstract class PersonBaseTest<T extends ImmutablePerson> extends ParameterizedTest implements PersonTest<T> {
 
-    private PersonFactory<T> factory;
+    private final PersonFactory<T> factory;
 
     public PersonBaseTest(Class<T> clazz) {
         factory = new PersonReflectionFactory<>(clazz);

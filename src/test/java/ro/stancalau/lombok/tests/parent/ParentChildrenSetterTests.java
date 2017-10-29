@@ -20,6 +20,7 @@ import static ro.stancalau.lombok.tests.base.TestNames.NEW_NAME;
 @RunWith(Parameterized.class)
 public class ParentChildrenSetterTests<T extends MutableParent> extends ParentBaseTest<T> {
 
+    @SuppressWarnings("unchecked")
     public ParentChildrenSetterTests(TestParam param) {
         super((Class<T>) param.getClassUnderTest());
     }

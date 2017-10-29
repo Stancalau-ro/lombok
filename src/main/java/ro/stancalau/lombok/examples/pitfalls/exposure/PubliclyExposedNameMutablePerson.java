@@ -9,12 +9,12 @@ import ro.stancalau.lombok.api.MutablePerson;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class PublicallyExposedNameMutablePerson implements MutablePerson {
+public class PubliclyExposedNameMutablePerson implements MutablePerson {
 
     @NonNull
     public String name;
 
-    public PublicallyExposedNameMutablePerson() {
+    public PubliclyExposedNameMutablePerson() {
         this(DEFAULT_NAME);
     }
 }

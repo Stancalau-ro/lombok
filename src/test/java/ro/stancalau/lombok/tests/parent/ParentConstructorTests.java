@@ -16,6 +16,7 @@ import static ro.stancalau.lombok.tests.base.TestNames.NAME;
 @RunWith(Parameterized.class)
 public class ParentConstructorTests<T extends ImmutableParent> extends ParentBaseTest<T> {
 
+    @SuppressWarnings("unchecked")
     public ParentConstructorTests(TestParam param) {
         super((Class<T>) param.getClassUnderTest());
     }

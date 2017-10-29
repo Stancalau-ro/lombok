@@ -14,6 +14,7 @@ import static ro.stancalau.lombok.tests.base.TestNames.NEW_NAME;
 @RunWith(Parameterized.class)
 public class PersonSetterTests<T extends MutablePerson> extends PersonBaseTest<T> {
 
+    @SuppressWarnings("unchecked")
     public PersonSetterTests(TestParam param) {
         super((Class<T>) param.getClassUnderTest());
     }
