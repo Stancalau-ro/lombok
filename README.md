@@ -10,5 +10,5 @@ Exemples for Lombok good practices and common pitfals.
 
 [Lombok Project home page](https://projectlombok.org/)
 
-[Gradle hope page](https://gradle.org/)
+[Gradle home page](https://gradle.org/)
 
