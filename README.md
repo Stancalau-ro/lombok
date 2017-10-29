@@ -4,7 +4,7 @@ Examples for Lombok good practices and common pitfalls.
 ## Prerequisites
 
 1. JDK 8
-2. Gradle or IDE gradle support 
+2. Gradle or IDE Gradle support 
 3. Lombok plugin over your IDE
 
 ## Pitfalls 
