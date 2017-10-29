@@ -10,13 +10,12 @@ import java.util.Set;
 
 @Value
 @AllArgsConstructor
-public class SideEffectProneImmutableParentImpl implements ImmutableParent {
+public class SideEffectProneImmutableParent implements ImmutableParent {
 
     private String name;
     private Set<MutablePerson> children;
 
-    public SideEffectProneImmutableParentImpl(String name) {
+    public SideEffectProneImmutableParent(String name) {
         this(name, Collections.emptySet());
     }
-
 }

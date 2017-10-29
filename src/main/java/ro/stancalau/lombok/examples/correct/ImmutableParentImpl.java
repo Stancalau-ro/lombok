@@ -18,6 +18,7 @@ public class ImmutableParentImpl implements ImmutableParent {
         this(name, Collections.emptySet());
     }
 
+    //Needs to be manually implemented instead of relying on @AllArgsConstructor or @RequiredArgsConstructor
     public ImmutableParentImpl(String name, Set<MutablePerson> children) {
         if (name == null) {
             throw new NullPointerException("Name cannot be null");
@@ -30,6 +31,8 @@ public class ImmutableParentImpl implements ImmutableParent {
     }
 
     @Override
+    //@Value will add @Getter too, which will return the reference of the mutable field,
+    //so manual implementation is required to return a copy or immutable wrapper.
     public Set<MutablePerson> getChildren() {
         return new HashSet<>(children);
     }

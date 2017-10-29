@@ -6,6 +6,6 @@ import ro.stancalau.lombok.examples.correct.EqualableParent;
 
 @Getter
 @Setter
-//Missing @EqualsAndHashCode and no .equals/.hashCode override
+//Missing @EqualsAndHashCode and no #equals/#hashCode override
 public class ExtendedEqualableWithNoAnnotationParent extends EqualableParent {
 }

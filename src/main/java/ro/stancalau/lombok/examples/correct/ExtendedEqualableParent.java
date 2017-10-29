@@ -6,6 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+//Must also have @EqualsAndHashCode annotation to ensure symmetry of #equals method
 @EqualsAndHashCode(callSuper = true)
 public class ExtendedEqualableParent extends EqualableParent {
 }

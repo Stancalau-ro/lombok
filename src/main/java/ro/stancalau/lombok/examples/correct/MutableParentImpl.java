@@ -27,6 +27,7 @@ public class MutableParentImpl implements MutableParent {
         this(name, Collections.emptySet());
     }
 
+    //Using @AllArgsConstructor would not call the setter, but assign reference directly even for mutable types
     public MutableParentImpl(String name, Set<MutablePerson> children) {
         setName(name);
         setChildren(children);
@@ -46,6 +47,7 @@ public class MutableParentImpl implements MutableParent {
     }
 
     @Override
+    //It is best practice to only mutate object state via mutator methods and never use getters to inflict side-effects
     public void addChild(@NonNull MutablePerson child) {
         children.add(child);
     }

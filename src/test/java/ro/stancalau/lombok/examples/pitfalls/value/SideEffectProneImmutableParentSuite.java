@@ -21,9 +21,9 @@ import static org.junit.runners.Suite.SuiteClasses;
         BasicPersonEqualsAndHashTests.class,
         PersonConstructorAndGetterTests.class
 })
-public class SideEffectProneImmutableParentImplSuite {
+public class SideEffectProneImmutableParentSuite {
 
-    private static final Class CLASS_UNDER_TEST = SideEffectProneImmutableParentImpl.class;
+    private static final Class CLASS_UNDER_TEST = SideEffectProneImmutableParent.class;
 
     @Parameters(name = "Class under test is {0}")
     public static Object[] params() {

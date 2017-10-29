@@ -42,6 +42,7 @@ public class NoArgsConstructorMutableParent implements MutableParent {
     }
 
     @Override
+    //It is best practice to only mutate object state via mutator methods and never use getters to inflict side-effects
     public void addChild(@NonNull MutablePerson child) {
         children.add(child);
     }
